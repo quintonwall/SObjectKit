@@ -1,0 +1,6 @@
+framework module SObjectKit {
+  umbrella header "SObjectKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

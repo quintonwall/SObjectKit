@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'SObjectKit_Example' do
+  pod 'SObjectKit', :path => '../'
+
+  target 'SObjectKit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

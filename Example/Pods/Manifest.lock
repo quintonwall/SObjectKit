@@ -1,0 +1,16 @@
+PODS:
+  - SObjectKit (0.1.0)
+
+DEPENDENCIES:
+  - SObjectKit (from `../`)
+
+EXTERNAL SOURCES:
+  SObjectKit:
+    :path: ../
+
+SPEC CHECKSUMS:
+  SObjectKit: abb26c3d0e54bbb659a50263ee656497068a7eea
+
+PODFILE CHECKSUM: 20ea172b54af9ba841a3e54365d4f58d9854eced
+
+COCOAPODS: 1.1.1

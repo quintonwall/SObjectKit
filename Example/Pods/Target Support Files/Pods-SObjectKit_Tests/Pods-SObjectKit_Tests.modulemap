@@ -1,0 +1,6 @@
+framework module Pods_SObjectKit_Tests {
+  umbrella header "Pods-SObjectKit_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
