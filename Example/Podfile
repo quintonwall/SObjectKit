@@ -2,6 +2,8 @@ use_frameworks!
 
 target 'SObjectKit_Example' do
   pod 'SObjectKit', :path => '../'
+   pod 'SwiftlySalesforce'
+   pod 'FCAlertView', :git => 'https://github.com/nimati/FCAlertView'
 
   target 'SObjectKit_Tests' do
     inherit! :search_paths

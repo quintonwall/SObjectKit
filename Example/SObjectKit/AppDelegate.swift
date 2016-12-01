@@ -7,15 +7,30 @@
 //
 
 import UIKit
+import SwiftlySalesforce
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, LoginViewPresentable {
 
     var window: UIWindow?
+    
+    //note: connected app set up in dash app org
+    let consumerKey = "3MVG9uudbyLbNPZNuIUUb1Twl.Jc6DArIF.i47pvYoR5ewGxErDz55CStWoSDpTxQKetVep7YVXKRK3IGFGD"
+    let redirectURL = NSURL(string: "sobjectkit://success")!
+    //let hostname = "na30.lightning.force.com"
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        OAuth2Manager.sharedInstance.configureWithConsumerKey(consumerKey, redirectURL: redirectURL, hostname: hostname)
+        OAuth2Manager.sharedInstance.authenticationDelegate = self
+
+        return true
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        handleRedirectURL(url)
         return true
     }
 
