@@ -5,6 +5,8 @@
 [![License](https://img.shields.io/cocoapods/l/SObjectKit.svg?style=flat)](http://cocoapods.org/pods/SObjectKit)
 [![Platform](https://img.shields.io/cocoapods/p/SObjectKit.svg?style=flat)](http://cocoapods.org/pods/SObjectKit)
 
+SObjectKit a collection of helpful utility classes and functions for working with Salesforce data types and data objects (SObjects)
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
