@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'SObjectKit'
   s.version          = '0.1.0'
-  s.summary          = 'SObjectKit a collection of helpful utility classes and functions for working with Salesforce data types and data objects (SObjects)'
+  s.summary          = 'SObjectKit makes working with Salesforce data easy.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
