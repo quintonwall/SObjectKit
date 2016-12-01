@@ -39,15 +39,8 @@ class AccountViewController: UITableViewController {
             
         }.then {
             ( result) -> () in
-            
                 self.allAccounts = Account.populateToCollection(result["records"] as! NSArray) as! [Account]
-                /*
-                let j = JSON(result["records"] as! NSArray)
             
-                for (_, subJson) in j {
-                    self.allAccounts.append(Account(json: subJson))
-                }
-                */
         }.always {
                 self.tableView.reloadData()
                 self.refreshControl?.endRefreshing()
