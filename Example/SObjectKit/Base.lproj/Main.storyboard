@@ -19,8 +19,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SObjectKit Sample App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DeW-3p-XTs">
+                                <rect key="frame" x="213" y="120" width="174" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="0.23137254900000001" green="0.40000000000000002" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJu-IE-paX">
+                                <rect key="frame" x="60" y="191" width="481" height="50"/>
+                                <string key="text">Note: This app uses SwiftlySalesforce to handle connection to salesforce. SObjectKit has no dependency to it. You can just as easily use the Salesforce Mobile SDK.</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" red="0.23137254900000001" green="0.40000000000000002" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S93-R0-nHR">
-                                <rect key="frame" x="226" y="371" width="149" height="30"/>
+                                <rect key="frame" x="226" y="450" width="149" height="30"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="   Log into Salesforce   ">
                                     <color key="titleColor" red="0.23137254900000001" green="0.40000000000000002" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -29,23 +42,24 @@
                                     <action selector="loginTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Suw-Pe-YL7"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SObjectKit Sample App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DeW-3p-XTs">
-                                <rect key="frame" x="213" y="290" width="174" height="21"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                <color key="textColor" red="0.23137254900000001" green="0.40000000000000002" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="jJu-IE-paX" firstAttribute="top" secondItem="DeW-3p-XTs" secondAttribute="bottom" constant="50" id="0pk-05-Yjm"/>
+                            <constraint firstItem="jJu-IE-paX" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" multiplier="0.8" constant="1" id="2Go-wI-t9Q"/>
                             <constraint firstItem="DeW-3p-XTs" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="3kP-5p-fGP"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="S93-R0-nHR" secondAttribute="bottom" constant="120" id="73z-JI-dIU"/>
                             <constraint firstItem="S93-R0-nHR" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="BPf-Ov-Xe5"/>
+                            <constraint firstItem="jJu-IE-paX" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="FRQ-KS-nJP"/>
                             <constraint firstItem="DeW-3p-XTs" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="Ffa-OK-Xvt"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="S93-R0-nHR" secondAttribute="bottom" constant="100" id="K5P-rh-MpE"/>
+                            <constraint firstItem="DeW-3p-XTs" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="100" id="XhO-sg-JeC"/>
                             <constraint firstItem="S93-R0-nHR" firstAttribute="top" secondItem="DeW-3p-XTs" secondAttribute="bottom" constant="60" id="Yay-SA-LVi"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="Ffa-OK-Xvt"/>
+                                <exclude reference="Yay-SA-LVi"/>
                                 <exclude reference="K5P-rh-MpE"/>
                             </mask>
                         </variation>

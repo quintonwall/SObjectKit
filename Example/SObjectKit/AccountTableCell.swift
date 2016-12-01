@@ -1,6 +1,7 @@
 //
 //  AccountTableCell.swift
-//  SObjectKit
+//  Basic example of how you can use the SObjectKit libraries to quickly work with Salesforce objects and fields
+//  Obviously I didn't spend much time making it look pretty :)
 //
 //  Created by QUINTON WALL on 12/1/16.
 //  Copyright © 2016 CocoaPods. All rights reserved.
@@ -34,6 +35,8 @@ public class AccountTableCell : UITableViewCell, MKMapViewDelegate {
         self.account = account
         accountNameLabel.text = account.Name
         tickerSymbolLabel.text = account.TickerSymbol
+        
+        //Using an SObjectKit extension on String to make date formatting easier
         lastUpdatedLabel.text = account.lastModifiedDate?.toShortPrettyString()
         
         OAuth2Manager.sharedInstance.credentials?.accessToken
