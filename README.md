@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/SObjectKit.svg?style=flat)](http://cocoapods.org/pods/SObjectKit)
 [![Platform](https://img.shields.io/cocoapods/p/SObjectKit.svg?style=flat)](http://cocoapods.org/pods/SObjectKit)
 
-SObjectKit a collection of helpful utility classes and functions for working with Salesforce data types and data objects (SObjects). Currently Accounts is the only implemented SObject, but now that the structure is all in place, the rest (no pun intended :P) will be added pretty quickly. I'm also looking at making the SObjects (Realm)[http://realm.io] compliant to make offline data storage super easy.
+SObjectKit a collection of helpful utility classes and functions for working with Salesforce data types and data objects (SObjects). Currently Accounts is the only implemented SObject, but now that the structure is all in place, the rest (no pun intended :P) will be added pretty quickly. I'm also looking at making the SObjects (Realm)[https://realm.io] compliant to make offline data storage super easy. 
 
 SObjectKit is intended as a companion to (SalesforceViews)[https://github.com/quintonwall/SalesforceViews], which will provide a collection of ready-to-go UIViews, as Xib files, you will be able to register with your app.
 
