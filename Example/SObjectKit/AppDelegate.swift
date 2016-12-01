@@ -15,9 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoginViewPresentable {
     var window: UIWindow?
     
     //note: connected app set up in dash app org
-    let consumerKey = "3MVG9uudbyLbNPZNuIUUb1Twl.Jc6DArIF.i47pvYoR5ewGxErDz55CStWoSDpTxQKetVep7YVXKRK3IGFGD"
+    let consumerKey = "3MVG9uudbyLbNPZNuIUUb1Twl.Jc6DArIF.i47pvYoR5ewGxErDz55CStWoSDpTxQKetVep7YVXKRK3IGFGDg"
     let redirectURL = NSURL(string: "sobjectkit://success")!
-    //let hostname = "na30.lightning.force.com"
+    let hostname = "na30.lightning.force.com"
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {

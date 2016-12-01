@@ -11,7 +11,7 @@ import UIKit
 import SwiftlySalesforce
 import FCAlertView
 import PromiseKit
-import qtilities
+import SObjectKit
 import SwiftyJSON
 
 class AccountViewController: UITableViewController {
@@ -23,7 +23,7 @@ class AccountViewController: UITableViewController {
         refreshControl?.addTarget(self, action: #selector(AccountViewController.handleRefresh), forControlEvents: UIControlEvents.ValueChanged)
         //register the qtilities default account cell
         //let bundle = NSBundle(forClass: self.dynamicType)
-        tableView.registerNib(UINib(nibName: "AccountTableCellView", bundle: NSBundle(forClass: AccountTableCellView.self)), forCellReuseIdentifier: "accountcell")
+       // tableView.registerNib(UINib(nibName: "AccountTableCellView", bundle: NSBundle(forClass: AccountTableCellView.self)), forCellReuseIdentifier: "accountcell")
 
         loadData()
 
@@ -61,8 +61,8 @@ class AccountViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("accountcell", forIndexPath: indexPath) as! AccountTableCellView
-        cell.bind(allAccounts[indexPath.item])
+        let cell = tableView.dequeueReusableCellWithIdentifier("accountcell", forIndexPath: indexPath) as! UITableViewCell
+        //cell.bind(allAccounts[indexPath.item])
         return cell
     }
     
