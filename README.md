@@ -7,6 +7,8 @@
 
 SObjectKit a collection of helpful utility classes and functions for working with Salesforce data types and data objects (SObjects). Currently Accounts is the only implemented SObject, but now that the structure is all in place, the rest (no pun intended :P) will be added pretty quickly.
 
+SObjectKit is intended as a companion to (SalesforceViews)[https://github.com/quintonwall/SalesforceViews], which will provide a collection of ready-to-go UIViews, as Xib files, you will be able to register with your app.
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
