@@ -33,16 +33,11 @@ SObjectKit provides implementations of all the Standard Salesforce Objects (SObj
 func loadData() {
 
   firstly {
-    SalesforceAPI.Query(soql: Account.soqlGetAllStandardFields).request()
+    SalesforceAPI.Query(soql: Account.soqlGetAllStandardFields()).request()
 
   }.then {
    ( result) -> () in
-
-     let j = JSON(result["records"] as! NSArray)
-
-        for (_, subJson) in j {
-          self.allAccounts.append(Account(json: subJson))
-        }
+     self.allAccounts = Account.populateToCollection(result["records"] as! NSArray) as! [Account]
   }.always {
      self.tableView.reloadData()
      self.refreshControl?.endRefreshing()
