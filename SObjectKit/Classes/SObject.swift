@@ -10,7 +10,8 @@
 
 import SwiftyJSON
 
-public class SObject  {
+
+public class SObject {
     
     public var id: String?
     public var isDeleted: Bool?
@@ -31,6 +32,17 @@ public class SObject  {
         lastModifiedDate = json["CreatedDate"].systemdate
        
     }
+    
+    public class func populateToCollection(records : NSArray) -> [SObject] {
+        preconditionFailure("This method has not been overridden by SObject implementation.")
+        
+    }
+    
+    public class func soqlGetAllStandardFields() -> String {
+        preconditionFailure("This method has not been overridden by SObject implementation.")
+        
+    }
+    
     
 }
 

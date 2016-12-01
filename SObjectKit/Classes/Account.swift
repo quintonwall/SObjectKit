@@ -10,7 +10,8 @@ import Foundation
 import SwiftyJSON
 
 
-public final class Account : SObject {
+
+public final class Account : SObject  {
     
     
     public var AccountNumber : String?
@@ -55,7 +56,23 @@ public final class Account : SObject {
     public var YearStarted : String?
   
 
-    public static var soqlGetAllStandardFields : String = "select AccountNumber, AccountSource, AnnualRevenue, BillingAddress, BillingGeocodeAccuracy, CleanStatus, CreatedById, CreatedDate,  DandbCompanyId, Description, DunsNumber, Fax, Id, Industry, IsDeleted, Jigsaw, JigsawCompanyId, LastActivityDate, LastModifiedById, LastModifiedDate, LastReferencedDate, LastViewedDate, MasterRecordId, NaicsCode, NaicsDesc, Name, NumberOfEmployees,  OwnerId, Ownership, ParentId, Phone, PhotoUrl, Rating, ShippingAddress, ShippingGeocodeAccuracy, Sic, SicDesc, Site, SystemModstamp, TickerSymbol, Tradestyle, Type, Website, YearStarted from Account"
+    
+    override public class func populateToCollection(records : NSArray)  -> [SObject] {
+        var allrecords : [Account] = []
+        
+        let j = JSON(records)
+        for (_, subJson) in j {
+            allrecords.append(Account(json: subJson))
+        }
+        
+        return allrecords
+    
+    }
+    
+    override public class func soqlGetAllStandardFields()  -> String {
+        return "select AccountNumber, AccountSource, AnnualRevenue, BillingAddress, BillingGeocodeAccuracy, CleanStatus, CreatedById, CreatedDate,  DandbCompanyId, Description, DunsNumber, Fax, Id, Industry, IsDeleted, Jigsaw, JigsawCompanyId, LastActivityDate, LastModifiedById, LastModifiedDate, LastReferencedDate, LastViewedDate, MasterRecordId, NaicsCode, NaicsDesc, Name, NumberOfEmployees,  OwnerId, Ownership, ParentId, Phone, PhotoUrl, Rating, ShippingAddress, ShippingGeocodeAccuracy, Sic, SicDesc, Site, SystemModstamp, TickerSymbol, Tradestyle, Type, Website, YearStarted from Account"
+    }
+
     
     
     
