@@ -22,7 +22,7 @@ public final class Account : SObject {
     //public var BillingAddressZip : String!
     //public var BillingAddressLongitude : String!
     //public var BillingAddressLatitude : String!
-    public var BillingAddress : Address?
+    public var BillingAddress : Address = Address()
     public var CleanStatus : String?
     public var DandbCompanyId : String?
     public var Description : String?
@@ -42,9 +42,11 @@ public final class Account : SObject {
     public var Ownership : String?
     public var ParentId : String?
     public var Phone : String?
-    public var PhotoUrl : NSURL?
+    //only returns a relative URL. You need to add your instance name to it, and store it in PhotoFullURL
+    public var PhotoRelativeUrl : String?
+    public var PhotoFullUrl : NSURL?
     public var Rating : String?
-    public var ShippingAddress : Address?
+    public var ShippingAddress : Address = Address()
     public var Sic : String?
     public var SicDesc : String?
     public var TickerSymbol : String?
@@ -60,21 +62,22 @@ public final class Account : SObject {
     public init(json: JSON) {
         super.init(objectType: SObjectType.Account, json: json)
         
+        Name = json["Name"].stringValue
         AccountNumber = json["AccountNumber"].stringValue
         AccountSource = json["AccountSource"].stringValue
         AnnualRevenue = json["AnnualRevenue"].doubleValue
-        BillingAddress?.street = json["BillingAddress"]["street"].stringValue
-        BillingAddress?.city = json["BillingAddress"]["city"].stringValue
-        BillingAddress?.state = json["BillingAddress"]["state"].stringValue
-        BillingAddress?.zip = json["BillingAddress"]["stateCode"].stringValue
-        BillingAddress?.longitude = json["BillingAddress"]["longitude"].doubleValue
-        BillingAddress?.latitude = json["BillingAddress"]["latitude"].doubleValue
-        ShippingAddress?.street = json["ShippingAddress"]["street"].stringValue
-        ShippingAddress?.city = json["ShippingAddress"]["city"].stringValue
-        ShippingAddress?.state = json["ShippingAddress"]["state"].stringValue
-        ShippingAddress?.zip = json["ShippingAddress"]["stateCode"].stringValue
-        ShippingAddress?.longitude = json["ShippingAddress"]["longitude"].doubleValue
-        ShippingAddress?.latitude = json["ShippingAddress"]["latitude"].doubleValue
+        BillingAddress.street = json["BillingAddress"]["street"].stringValue
+        BillingAddress.city = json["BillingAddress"]["city"].stringValue
+        BillingAddress.state = json["BillingAddress"]["state"].stringValue
+        BillingAddress.zip = json["BillingAddress"]["stateCode"].stringValue
+        BillingAddress.longitude = json["BillingAddress"]["longitude"].doubleValue
+        BillingAddress.latitude = json["BillingAddress"]["latitude"].doubleValue
+        ShippingAddress.street = json["ShippingAddress"]["street"].stringValue
+        ShippingAddress.city = json["ShippingAddress"]["city"].stringValue
+        ShippingAddress.state = json["ShippingAddress"]["state"].stringValue
+        ShippingAddress.zip = json["ShippingAddress"]["stateCode"].stringValue
+        ShippingAddress.longitude = json["ShippingAddress"]["longitude"].doubleValue
+        ShippingAddress.latitude = json["ShippingAddress"]["latitude"].doubleValue
         CleanStatus = json["CleanStatus"].stringValue
         DandbCompanyId = json["DandbCompanyId"].stringValue
         Description = json["Description"].stringValue
@@ -89,7 +92,6 @@ public final class Account : SObject {
         MasterRecordId = json["MasterRecordId"].stringValue
         NaicsCode = json["NaicsCode"].stringValue
         NaicsDesc = json["NaicsDesc"].stringValue
-        Name = json["Name"].stringValue
         NumberOfEmployees = json["NumberOfEmployees"].intValue
         Ownership = json["Ownership"].stringValue
         ParentId = json["ParentId"].stringValue
@@ -99,7 +101,11 @@ public final class Account : SObject {
         SicDesc = json["SicDesc"].stringValue
         TickerSymbol = json["TickerSymbol"].stringValue
         Tradestyle = json["Tradestyle"].stringValue
-        PhotoUrl = NSURL(string: json["PhotoUrl"].stringValue)
+        
+        //photo url is only stored as a relative url in salesforce. eg: /services/images/photo/0013600000q8rb0AAA
+        //you need to retrieve the hostname from your SDK that you are using to connect to salesforce.
+        //for convenience, you can store the full URL in PhotoFullURL
+        PhotoRelativeUrl = json["PhotoUrl"].stringValue
         Website = NSURL(string: json["Website"].stringValue)
         
     }

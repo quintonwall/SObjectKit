@@ -61,8 +61,8 @@ class AccountViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("accountcell", forIndexPath: indexPath) as! UITableViewCell
-        //cell.bind(allAccounts[indexPath.item])
+        let cell = tableView.dequeueReusableCellWithIdentifier("accountcell", forIndexPath: indexPath) as! AccountTableCell
+        cell.bind(allAccounts[indexPath.item])
         return cell
     }
     

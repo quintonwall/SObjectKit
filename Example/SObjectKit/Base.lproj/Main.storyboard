@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -20,7 +22,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S93-R0-nHR">
                                 <rect key="frame" x="226" y="371" width="149" height="30"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
-                                <state key="normal" title="   Log into Salesforce   "/>
+                                <state key="normal" title="   Log into Salesforce   ">
+                                    <color key="titleColor" red="0.23137254900000001" green="0.40000000000000002" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="loginTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Suw-Pe-YL7"/>
                                 </connections>
@@ -28,7 +32,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SObjectKit Sample App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DeW-3p-XTs">
                                 <rect key="frame" x="213" y="290" width="174" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.23137254900000001" green="0.40000000000000002" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -59,20 +63,96 @@
         <scene sceneID="rdM-4q-rJT">
             <objects>
                 <tableViewController storyboardIdentifier="accountlist" title="Accounts" id="tgc-ED-YbM" customClass="AccountViewController" customModule="SObjectKit_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Y9z-1c-sEf">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" id="Y9z-1c-sEf">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexBackgroundColor" red="0.0" green="0.63097590209999999" blue="0.88061577079999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="accountcell" selectionStyle="default" indentationWidth="10" reuseIdentifier="accountcell" id="ucM-xx-FBc">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="accountcell" selectionStyle="default" indentationWidth="10" reuseIdentifier="accountcell" rowHeight="200" id="ucM-xx-FBc" customClass="AccountTableCell" customModule="SObjectKit_Example" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ucM-xx-FBc" id="7PL-b8-YCF">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="199"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OqQ-3T-jbE" userLabel="accountImage">
+                                            <rect key="frame" x="28" y="28" width="50" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="5ST-Vc-0zZ"/>
+                                                <constraint firstAttribute="height" constant="50" id="eGR-Qs-l0m"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZB-WL-zOs">
+                                            <rect key="frame" x="88" y="28" width="210" height="20"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                            <color key="textColor" red="0.23137254900000001" green="0.40000000000000002" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CRM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yjw-3T-Bfa">
+                                            <rect key="frame" x="28" y="88" width="50" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="Yi7-Rk-fBn"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                            <color key="textColor" red="0.23137254900000001" green="0.40000000000000002" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aB6-x7-gL4">
+                                            <rect key="frame" x="352" y="9" width="240" height="180"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="250" id="LB0-di-IOL"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="LB0-di-IOL"/>
+                                                </mask>
+                                            </variation>
+                                        </mapView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DD/MM/YYYY" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CAR-XX-fbB">
+                                            <rect key="frame" x="88" y="88" width="105" height="21"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                            <color key="textColor" red="0.23137254900000001" green="0.40000000000000002" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LAST UPDATED" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fhw-P5-7IS">
+                                            <rect key="frame" x="88" y="63" width="85" height="15"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
+                                            <color key="textColor" red="0.4961255114" green="0.48162703559999998" blue="0.45128187209999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="aB6-x7-gL4" firstAttribute="centerY" secondItem="7PL-b8-YCF" secondAttribute="centerY" id="1Mj-En-iYY"/>
+                                        <constraint firstItem="Yjw-3T-Bfa" firstAttribute="top" secondItem="OqQ-3T-jbE" secondAttribute="bottom" constant="10" id="3BS-jl-mNg"/>
+                                        <constraint firstItem="hZB-WL-zOs" firstAttribute="width" secondItem="7PL-b8-YCF" secondAttribute="width" multiplier="0.35" id="43q-vr-D1I"/>
+                                        <constraint firstItem="hZB-WL-zOs" firstAttribute="top" secondItem="7PL-b8-YCF" secondAttribute="topMargin" constant="20" id="4Gr-Au-6XH"/>
+                                        <constraint firstItem="OqQ-3T-jbE" firstAttribute="leading" secondItem="7PL-b8-YCF" secondAttribute="leadingMargin" constant="20" id="6eM-XU-IH4"/>
+                                        <constraint firstItem="aB6-x7-gL4" firstAttribute="width" secondItem="7PL-b8-YCF" secondAttribute="width" multiplier="0.4" id="Ezm-CI-BxL"/>
+                                        <constraint firstItem="OqQ-3T-jbE" firstAttribute="top" secondItem="7PL-b8-YCF" secondAttribute="topMargin" constant="20" id="FM5-Cy-qtj"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="aB6-x7-gL4" secondAttribute="trailing" id="Gsq-c4-R9L"/>
+                                        <constraint firstItem="Fhw-P5-7IS" firstAttribute="leading" secondItem="OqQ-3T-jbE" secondAttribute="trailing" constant="10" id="INE-UL-vLU"/>
+                                        <constraint firstItem="OqQ-3T-jbE" firstAttribute="centerY" secondItem="7PL-b8-YCF" secondAttribute="centerY" id="QJG-J5-DR0"/>
+                                        <constraint firstItem="aB6-x7-gL4" firstAttribute="height" secondItem="7PL-b8-YCF" secondAttribute="height" multiplier="0.9" id="REN-9j-IBk"/>
+                                        <constraint firstItem="CAR-XX-fbB" firstAttribute="leading" secondItem="Yjw-3T-Bfa" secondAttribute="trailing" constant="10" id="YKQ-y8-oS5"/>
+                                        <constraint firstItem="hZB-WL-zOs" firstAttribute="leading" secondItem="OqQ-3T-jbE" secondAttribute="trailing" constant="10" id="cWW-Dq-SVi"/>
+                                        <constraint firstItem="Fhw-P5-7IS" firstAttribute="top" secondItem="hZB-WL-zOs" secondAttribute="bottom" constant="15" id="r2F-ep-i5P"/>
+                                        <constraint firstItem="Yjw-3T-Bfa" firstAttribute="leading" secondItem="7PL-b8-YCF" secondAttribute="leadingMargin" constant="20" id="s35-66-q7Z"/>
+                                        <constraint firstItem="CAR-XX-fbB" firstAttribute="top" secondItem="Fhw-P5-7IS" secondAttribute="bottom" constant="10" id="ses-FG-fh4"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="QJG-J5-DR0"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="1" green="0.43490979629999998" blue="0.49169888360000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="accountNameLabel" destination="hZB-WL-zOs" id="l08-0D-a8w"/>
+                                    <outlet property="accountPhoto" destination="OqQ-3T-jbE" id="nGJ-jU-hGQ"/>
+                                    <outlet property="billingMap" destination="aB6-x7-gL4" id="eBk-ge-zni"/>
+                                    <outlet property="lastUpdatedLabel" destination="CAR-XX-fbB" id="8Hc-FK-zy6"/>
+                                    <outlet property="tickerSymbolLabel" destination="Yjw-3T-Bfa" id="pUx-Cv-mKg"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
