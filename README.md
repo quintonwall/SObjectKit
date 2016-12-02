@@ -28,7 +28,7 @@ pod "SObjectKit"
 
 ## Usage
 
-SObjectKit provides implementations of all the Standard Salesforce Objects (SObjects). It does not provide any communication or authentication to Salesforce. It is up to the developer to choose which SDK they prefer. Many developers use the [Salesforce Mobile SDK](https://github.com/forcedotcom/SalesforceMobileSDK-iOS), the official SDK provided by Salesforce. I'm also a fan of [SwiftlySalesforce](https://github.com/mike4aday) because of its use of [Promises](http://promisekit.org). They make async calls much more elegant. Because of this reason, the sample app included with the pod uses SwiftlySalesforce. 
+SObjectKit provides implementations of all the Standard Salesforce Objects (SObjects). It does not provide any communication or authentication to Salesforce. It is up to the developer to choose which SDK they prefer. Many developers use the [Salesforce Mobile SDK](https://github.com/forcedotcom/SalesforceMobileSDK-iOS), the official SDK provided by Salesforce. I'm also a fan of [SwiftlySalesforce](https://github.com/mike4aday/SwiftlySalesforce) because of its use of [Promises](http://promisekit.org). They make async calls much more elegant. Because of this reason, the sample app included with the pod uses SwiftlySalesforce. 
 
 ### Example: Fetch data and load into a table cell
 ```swift
