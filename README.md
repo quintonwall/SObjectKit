@@ -87,6 +87,28 @@ override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath:
 
 ```
 
+## Querying Data
+By default, SObjectKit is configured with SOQL statements to fetch all standard fields. (I will add an example for custom fields via an extension to a standard object shortly) You have three options to fetch standard fields: 
+
+### Fetch all fields for an sobject type
+```
+ let soqlstmt = Opportunity.soqlGetAllStandardFields(nil)
+```
+
+### Fetch all fields for a specific record
+```
+ let soqlstmt = Opportunity.soqlGetAllStandardFields(recordId)
+
+```
+
+### write your own query with just the fields you want
+```
+  //Using SwiftlySalesforce to handle comms with Salesforce
+   SalesforceAPI.Query(soql: "Select Id, Name, NextStep From Opportunity").request()
+```
+
+
+
 
 ## Author
 
