@@ -13,6 +13,10 @@ import SwiftyJSON
 
 public class SObject {
     
+    
+    //update this each time we update the sobjects
+    public static let salesforceAPIVersion : String = "37.0"
+    
     public var id: String?
     public var isDeleted: Bool?
     public var createdById: String?
@@ -20,6 +24,8 @@ public class SObject {
     public var lastModifiedById: String?
     public var lastModifiedDate : NSDate?
     public var type: String?
+    
+    
     
     
     public init(objectType: String, json: JSON) {
