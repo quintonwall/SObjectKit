@@ -17,10 +17,14 @@ import SwiftyJSON
 class AccountViewController: UITableViewController {
     
      var allAccounts: [Account] = []
+    var selectedAccount: Account?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         refreshControl?.addTarget(self, action: #selector(AccountViewController.handleRefresh), forControlEvents: UIControlEvents.ValueChanged)
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
         //register the qtilities default account cell
         //let bundle = NSBundle(forClass: self.dynamicType)
        // tableView.registerNib(UINib(nibName: "AccountTableCellView", bundle: NSBundle(forClass: AccountTableCellView.self)), forCellReuseIdentifier: "accountcell")
@@ -35,7 +39,7 @@ class AccountViewController: UITableViewController {
      
         
         firstly {
-             SalesforceAPI.Query(soql: Account.soqlGetAllStandardFields()).request()
+             SalesforceAPI.Query(soql: Account.soqlGetAllStandardFields(nil)).request()
             
         }.then {
             ( result) -> () in
@@ -68,9 +72,25 @@ class AccountViewController: UITableViewController {
         return self.allAccounts.count
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! AccountTableCell
+        selectedAccount = cell.account
+        performSegueWithIdentifier("OpportunitiesForAccount", sender: self)
+        
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "OpportunitiesForAccount" {
+            let navController = segue.destinationViewController as! UINavigationController
+            let destVC = navController.topViewController as! OpportunityTableViewController
+            destVC.parentAccount = self.selectedAccount
+        }
     }
 }
 

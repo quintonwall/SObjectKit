@@ -17,7 +17,7 @@ import SwiftlySalesforce
 
 public class AccountTableCell : UITableViewCell, MKMapViewDelegate {
     
-    private var account : Account!
+    public var account : Account!
     
     @IBOutlet weak var lastUpdatedLabel: UILabel!
     @IBOutlet weak var billingMap: MKMapView!

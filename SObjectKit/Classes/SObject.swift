@@ -33,12 +33,28 @@ public class SObject {
        
     }
     
+    public init(id: String, objectType: String) {
+        type =  objectType
+        self.id = id
+    }
+    
+    
     public class func populateToCollection(records : NSArray) -> [SObject] {
         preconditionFailure("This method has not been overridden by SObject implementation.")
         
     }
     
-    public class func soqlGetAllStandardFields() -> String {
+    /* leave id as nil for all  records
+     * Sample implementation: 
+     *  var soql = "select AccountId, ....,  Amount from Opportunity"
+     
+        if (id ?? "").isEmpty {
+          return soql
+        } else {
+          return "\(soql) where id = '\(id)'"
+        }
+    */
+    public class func soqlGetAllStandardFields(id: String?) -> String {
         preconditionFailure("This method has not been overridden by SObject implementation.")
         
     }
