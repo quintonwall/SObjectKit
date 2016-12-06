@@ -5,11 +5,15 @@
 [![License](https://img.shields.io/cocoapods/l/SObjectKit.svg?style=flat)](http://cocoapods.org/pods/SObjectKit)
 [![Platform](https://img.shields.io/cocoapods/p/SObjectKit.svg?style=flat)](http://cocoapods.org/pods/SObjectKit)
 
-SObjectKit a collection of helpful utility classes and functions for working with Salesforce data types and data objects (SObjects). Currently Accounts is the only implemented SObject, but now that the structure is all in place, the rest (no pun intended :P) will be added pretty quickly. I'm also looking at making the SObjects [Realm](https://realm.io) compliant to make offline data storage super easy. 
+SObjectKit a collection of helpful utility classes and functions for working with Salesforce data types and data objects (SObjects). 
 
-SObjectKit is not intended to be a complete OO / relational model of Salesforce's data structure, rather it is intended to solve for the 80% use case where a developer who doesn't know Salesforce APIs or SOQL wants to fetch and bind data.
+SObjectKit is not intended to be a complete OO / relational model of Salesforce's data structure, rather it is intended to solve for the 80% use case where a developer who doesn't know Salesforce APIs or SOQL wants to fetch and bind data. This generally models the Salesforce REST API approach which does not return all related records of an object, rather it returns the id of related records. I'm also looking at making the SObjects [Realm](https://realm.io) compliant to make offline data storage super easy. 
 
 SObjectKit will also be bundled as a companion to [SalesforceViews](https://github.com/quintonwall/SalesforceViews), which will provide a collection of ready-to-go UIViews, as Xib files, you will be able to register with your app.
+
+The following objects have already been implemented, with the other key standard objects to follow shortly.
+ * Account
+ * Opportunity
 
 ## Example
 
@@ -35,7 +39,7 @@ SObjectKit provides implementations of all the Standard Salesforce Objects (SObj
 func loadData() {
 
   firstly {
-    SalesforceAPI.Query(soql: Account.soqlGetAllStandardFields()).request()
+    SalesforceAPI.Query(soql: Account.soqlGetAllStandardFields(nil)).request()
 
   }.then {
    ( result) -> () in
