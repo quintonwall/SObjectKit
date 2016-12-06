@@ -112,7 +112,7 @@ By default, SObjectKit is configured with SOQL statements to fetch all standard 
 
 ## Author
 
-quintonwall, quinton_wall@hotmail.com
+[Quinton Wall](https://twitter.com/quintonwall)
 
 ## License
 
