@@ -11,7 +11,7 @@ SObjectKit is not intended to be a complete OO / relational model of Salesforce'
 
 SObjectKit will also be bundled as a companion to [SalesforceViews](https://github.com/quintonwall/SalesforceViews), which will provide a collection of ready-to-go UIViews, as Xib files, you will be able to register with your app.
 
-The Big 6 (Account, Opportunity, OpportunityLineItem, Lead, Contact, Case) will be implemented in the initial version, with other standard objects added over time as needed, or contributed by the community.
+The Big 6 (Account, Opportunity, OpportunityLineItem, Lead, Contact, Case) will be implemented in the initial version, with other standard objects added over time as needed, or as contributed by the community.
 
 The following objects have currently been implemented:
  * Account
