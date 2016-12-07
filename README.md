@@ -7,7 +7,7 @@
 
 SObjectKit a collection of helpful utility classes and functions for working with Salesforce data types and data objects (SObjects). 
 
-SObjectKit is not intended to be a complete OO / relational model of Salesforce's data structure, rather it is intended to solve for the 80% use case where a developer who doesn't know Salesforce APIs or SOQL wants to fetch and bind data. This generally models the Salesforce REST API approach which does not return all related records of an object, rather it returns the id of related records. I'm also looking at making the SObjects [Realm](https://realm.io) compliant to make offline data storage super easy. 
+SObjectKit is not intended to be a complete OO / relational model of Salesforce's data structure, rather it is intended to solve for the 80% use case where a developer who doesn't know Salesforce APIs or SOQL wants to fetch and bind data. This generally models the Salesforce REST API approach which does not return all related records of an object, rather it returns the id of related records, which you can use to fetch related data and store on the specific objects collection variables.  I'm also looking at making the SObjects [Realm](https://realm.io) compliant to make offline data storage super easy. Currently SObjectKit is read-only. 
 
 SObjectKit will also be bundled as a companion to [SalesforceViews](https://github.com/quintonwall/SalesforceViews), which will provide a collection of ready-to-go UIViews, as Xib files, you will be able to register with your app.
 
@@ -16,7 +16,11 @@ The Big 6 (Account, Opportunity, OpportunityLineItem, Lead, Contact, Case) will 
 The following objects have currently been implemented:
  * Account
  * Opportunity
+ * OpporuntityLineItems
  * Lead
+ * Contact
+ * Product2 
+ * PricebookEntry
 
 ## Example
 
@@ -95,6 +99,23 @@ account.PhotoFullUrl = NSURL(string: "https://"+OAuth2Manager.sharedInstance.hos
 
 ```
 
+### Related Objects
+The Saleforce REST API doesn't fetch related children records (of course, you can write your own SOQL to do this). SObjectKit models this approach, but provides convenient collection variables on SObject types. Developers can use these collections to easily manage related data once fetched from Salesforce.
+```swift
+firstly {
+   SalesforceAPI.Query(soql: Opportunity.soqlGetOpportunitiesForAccount(accountid)).request()
+
+}.then {
+  ( result) -> () in
+     self.account.opportunities = Opportunity.populateToCollection(result["records"] as! NSArray) as! [Opportunity]
+}.always {
+ //do something
+}.error { _ in
+//do some error handling
+}
+
+```
+
 ## Querying Data
 By default, SObjectKit is configured with SOQL statements to fetch all standard fields. (I will add an example for custom fields via an extension to a standard object shortly) You have three options to fetch standard fields: 
 
@@ -116,6 +137,7 @@ By default, SObjectKit is configured with SOQL statements to fetch all standard 
 ```
 
 
+## Working with Extensions
 
 
 ## Author
