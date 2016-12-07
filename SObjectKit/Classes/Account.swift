@@ -17,12 +17,6 @@ public final class Account : SObject  {
     public var AccountNumber : String?
     public var AccountSource : String?
     public var AnnualRevenue : Double = 0.0
-    //public var BillingAddressStreet : String!
-    //public var BillingAddressCity : String!
-    //public var BillingAddressState : String!
-    //public var BillingAddressZip : String!
-    //public var BillingAddressLongitude : String!
-    //public var BillingAddressLatitude : String!
     public var BillingAddress : Address = Address()
     public var CleanStatus : String?
     public var DandbCompanyId : String?
