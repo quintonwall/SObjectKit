@@ -79,6 +79,7 @@
 		5AD1E5A51DF792FD003254D0 /* Lead.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD1E5A41DF792FD003254D0 /* Lead.swift */; };
 		5AD33AA71DF8837F007634A2 /* OpportunityLineItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD33AA61DF8837F007634A2 /* OpportunityLineItem.swift */; };
 		5AD33AA91DF8838F007634A2 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD33AA81DF8838F007634A2 /* Contact.swift */; };
+		5AF1174E1DF88C5400CCB59D /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF1174C1DF88C0600CCB59D /* Product.swift */; };
 		5B0C6B9249E98070BF02F6C9408FDA5E /* SDWebImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D58CF89D483459C17BE65EE7B71F6B6 /* SDWebImageDecoder.m */; };
 		5D48F9DCDA1224F7AE610544513311E6 /* UIAlertView+AnyPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = D274ABA78354D814457099441E20B135 /* UIAlertView+AnyPromise.m */; };
 		5F193AFDA8E41A904D4B657769F49A93 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B341731981B1647A937514703BAC582A /* MultipartFormData.swift */; };
@@ -389,6 +390,7 @@
 		5AD1E5A41DF792FD003254D0 /* Lead.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lead.swift; sourceTree = "<group>"; };
 		5AD33AA61DF8837F007634A2 /* OpportunityLineItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpportunityLineItem.swift; sourceTree = "<group>"; };
 		5AD33AA81DF8838F007634A2 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		5AF1174C1DF88C0600CCB59D /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		5B1273FB4DF21239690D8578F5DDEE19 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSData+ImageContentType.h"; path = "SDWebImage/NSData+ImageContentType.h"; sourceTree = "<group>"; };
 		5C84E5E91332101CC902793674FEBE41 /* FCAlertView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FCAlertView.h; path = FCAlertView/Classes/FCAlertView.h; sourceTree = "<group>"; };
 		5D3337A6BD52E7943DC92230FC8FBF26 /* SwiftlySalesforce-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftlySalesforce-dummy.m"; sourceTree = "<group>"; };
@@ -826,6 +828,7 @@
 				5AD1E5A41DF792FD003254D0 /* Lead.swift */,
 				5AD33AA61DF8837F007634A2 /* OpportunityLineItem.swift */,
 				5AD33AA81DF8838F007634A2 /* Contact.swift */,
+				5AF1174C1DF88C0600CCB59D /* Product.swift */,
 			);
 			name = SObjects;
 			sourceTree = "<group>";
@@ -1744,6 +1747,7 @@
 				215378F717E5FD30EA388878F32AEDCD /* SObject.swift in Sources */,
 				5AD33AA71DF8837F007634A2 /* OpportunityLineItem.swift in Sources */,
 				8BFA120BB7CD0653A564C790E7AA740D /* SObjectKit-dummy.m in Sources */,
+				5AF1174E1DF88C5400CCB59D /* Product.swift in Sources */,
 				18C3DAA520822663D0DCEF1F954970D2 /* String.swift in Sources */,
 				1A51DF6C8D3CBC033147F23F35688496 /* UIColor.swift in Sources */,
 				179F2D498D784849EC1644EE14843598 /* UIDevice.swift in Sources */,
