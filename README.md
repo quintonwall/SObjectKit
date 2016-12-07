@@ -138,7 +138,20 @@ By default, SObjectKit is configured with SOQL statements to fetch all standard 
 
 
 ## Working with Extensions
+A number of extensions are included in SObjectKit to make it even easier to work with Salesforce data. The following two functions are likely to be used the most. Check out the API docs for more examples.
 
+### Salesforce data format
+Salesforce uses RFC3339 format (yyyy-MM-dd'T'HH:mm:ss.S'Z') for system dates which are not typically what you want to display in your app. Most of the time you want something like MM/DD/YY
+```swift
+  createdDateLabel.text = account.createdDate.toShortPrettyString()
+```
+### Salesforce protected URLs
+Some information in Salesforce, most notably photoURLs (which are returned as relative URLs), can be accessed via a direct URL and valid auth token. The following example demonstrates how you can uses SwiftlySalesforce and the NSURL extension to simplify calling protected URLs. Note: calling NSURL.protectedSalesforceURL on a non-HTTPS url will through an assertion failed error at runtime as all Salesforce protected URLs must be accessed via HTTPS.
+```swift
+
+account.PhotoFullUrl = NSURL(string: "https://"+OAuth2Manager.sharedInstance.hostname+account.PhotoRelativeUrl!)?.protectedSalesforceURL((OAuth2Manager.sharedInstance.credentials?.accessToken)!)
+
+```
 
 ## Author
 
