@@ -36,6 +36,9 @@ public final class Opportunity : SObject  {
     public var StageName : String?
     public var TotalOpportunityQuantity : Double?
     
+     /// Description: stores related opportunities. This is not populated in init (through results payload). Dev must store themselves.
+    public var opportunityLineItems : [OpportunityLineItem] = []
+    
     
     
     override public class func populateToCollection(records : NSArray)  -> [SObject] {
@@ -96,6 +99,7 @@ public final class Opportunity : SObject  {
         Probability = json["Probability"].stringValue
         StageName = json["StageName"].stringValue
         TotalOpportunityQuantity = json["TotalOpportunityQuantity"].doubleValue
+    
         
     }
 }

@@ -1,6 +1,7 @@
 //
 //  Product.swift
 //  Pods
+// Represents the Product2 sobject
 //
 //  Created by QUINTON WALL on 12/7/16.
 //
@@ -47,7 +48,7 @@ public final class Product : SObject  {
     }
     
     public init(json: JSON) {
-        super.init(objectType: SObjectType.Contact, json: json)
+        super.init(objectType: SObjectType.Product2, json: json)
         
         Name = json["Name"].stringValue
         ProductCode = json["ProductCode"].stringValue

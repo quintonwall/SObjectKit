@@ -80,7 +80,7 @@ public final class Lead : SObject  {
     
     
     public init(json: JSON) {
-        super.init(objectType: SObjectType.Opportunity, json: json)
+        super.init(objectType: SObjectType.Lead, json: json)
         
         LeadAddress.street = json["Address"]["street"].stringValue
         LeadAddress.city = json["Address"]["city"].stringValue

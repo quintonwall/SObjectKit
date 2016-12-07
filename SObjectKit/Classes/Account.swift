@@ -37,7 +37,7 @@ public final class Account : SObject  {
     public var Ownership : String?
     public var ParentId : String?
     public var Phone : String?
-    //only returns a relative URL. You need to add your instance name to it, and store it in PhotoFullURL
+    /// Description: only returns a relative URL. You need to add your instance name to it, and store it in PhotoFullURL
     public var PhotoRelativeUrl : String?
     public var PhotoFullUrl : NSURL?
     public var Rating : String?
@@ -48,6 +48,11 @@ public final class Account : SObject  {
     public var Tradestyle : String?
     public var Website : NSURL?
     public var YearStarted : String?
+    
+    /// Description: stores related opportunities. This is not populated in init (through results payload). Dev must store themselves.
+    public var opportunities : [Opportunity] = []
+     /// Description: stores related opportunities. This is not populated in init (through results payload). Dev must store themselves.
+    public var contacts : [Contact] = []
   
 
     
