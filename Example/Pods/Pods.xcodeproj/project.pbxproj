@@ -76,6 +76,7 @@
 		57D7347855B0417F8CD96054445C06C9 /* AnyPromise.h in Headers */ = {isa = PBXBuildFile; fileRef = D43CCEF2C74D117C47E45B89C5984CE9 /* AnyPromise.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		58597FACD9B948EB5E4EB1A96E84F9DE /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1358A124BECE416A30B95B9EF60B04E /* NetworkReachabilityManager.swift */; };
 		5ABAD6351DF0F6FD00143159 /* Opportunity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABAD6331DF0F6F700143159 /* Opportunity.swift */; };
+		5AD1E5A51DF792FD003254D0 /* Lead.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD1E5A41DF792FD003254D0 /* Lead.swift */; };
 		5B0C6B9249E98070BF02F6C9408FDA5E /* SDWebImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D58CF89D483459C17BE65EE7B71F6B6 /* SDWebImageDecoder.m */; };
 		5D48F9DCDA1224F7AE610544513311E6 /* UIAlertView+AnyPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = D274ABA78354D814457099441E20B135 /* UIAlertView+AnyPromise.m */; };
 		5F193AFDA8E41A904D4B657769F49A93 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B341731981B1647A937514703BAC582A /* MultipartFormData.swift */; };
@@ -383,6 +384,7 @@
 		587B454DB7AEEE10F3C26781E0BDE40C /* SwiftlySalesforce.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SwiftlySalesforce.h; path = Pod/Classes/SwiftlySalesforce.h; sourceTree = "<group>"; };
 		5A47F006F546BAB056901B2B0C36D2BE /* Manager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Manager.swift; path = Source/Manager.swift; sourceTree = "<group>"; };
 		5ABAD6331DF0F6F700143159 /* Opportunity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Opportunity.swift; sourceTree = "<group>"; };
+		5AD1E5A41DF792FD003254D0 /* Lead.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lead.swift; sourceTree = "<group>"; };
 		5B1273FB4DF21239690D8578F5DDEE19 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSData+ImageContentType.h"; path = "SDWebImage/NSData+ImageContentType.h"; sourceTree = "<group>"; };
 		5C84E5E91332101CC902793674FEBE41 /* FCAlertView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FCAlertView.h; path = FCAlertView/Classes/FCAlertView.h; sourceTree = "<group>"; };
 		5D3337A6BD52E7943DC92230FC8FBF26 /* SwiftlySalesforce-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftlySalesforce-dummy.m"; sourceTree = "<group>"; };
@@ -817,6 +819,7 @@
 				6AD54974EF62502B0FB11360249E19AE /* Address.swift */,
 				4638EDEBFF33DE6BB161407532922EBA /* SObject.swift */,
 				5ABAD6331DF0F6F700143159 /* Opportunity.swift */,
+				5AD1E5A41DF792FD003254D0 /* Lead.swift */,
 			);
 			name = SObjects;
 			sourceTree = "<group>";
@@ -1724,6 +1727,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AD1E5A51DF792FD003254D0 /* Lead.swift in Sources */,
 				416FFDEC679913BAC557BD8D304A3B47 /* Account.swift in Sources */,
 				E4A0E759C8C441DC3012E16E9D6CC49B /* Address.swift in Sources */,
 				316B40472A202A3A61BFECCBE1C7BA24 /* JSON.swift in Sources */,

@@ -95,13 +95,15 @@ public final class Account : SObject  {
         BillingAddress.street = json["BillingAddress"]["street"].stringValue
         BillingAddress.city = json["BillingAddress"]["city"].stringValue
         BillingAddress.state = json["BillingAddress"]["state"].stringValue
-        BillingAddress.zip = json["BillingAddress"]["stateCode"].stringValue
+        BillingAddress.stateCode = json["BillingAddress"]["stateCode"].stringValue
+        BillingAddress.zip = json["BillingAddress"]["postalCode"].stringValue
         BillingAddress.longitude = json["BillingAddress"]["longitude"].doubleValue
         BillingAddress.latitude = json["BillingAddress"]["latitude"].doubleValue
         ShippingAddress.street = json["ShippingAddress"]["street"].stringValue
         ShippingAddress.city = json["ShippingAddress"]["city"].stringValue
         ShippingAddress.state = json["ShippingAddress"]["state"].stringValue
-        ShippingAddress.zip = json["ShippingAddress"]["stateCode"].stringValue
+        ShippingAddress.stateCode = json["ShippingAddress"]["stateCode"].stringValue
+        ShippingAddress.zip = json["ShippingAddress"]["postalCode"].stringValue
         ShippingAddress.longitude = json["ShippingAddress"]["longitude"].doubleValue
         ShippingAddress.latitude = json["ShippingAddress"]["latitude"].doubleValue
         CleanStatus = json["CleanStatus"].stringValue
