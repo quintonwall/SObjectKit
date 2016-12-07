@@ -82,7 +82,8 @@ override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath:
     //you need to retrieve the hostname from your SDK that you are using to connect to salesforce, and append the accessToken...messy I know!
 
     //In this sample app, I am using SwiftlySalesforce and then storing it on my account object for convenience
-    account.PhotoFullUrl = NSURL(string: "https://"+OAuth2Manager.sharedInstance.hostname+account.PhotoRelativeUrl!+"?oauth_token="+(OAuth2Manager.sharedInstance.credentials?.accessToken)!)
+account.PhotoFullUrl = NSURL(string: "https://"+OAuth2Manager.sharedInstance.hostname+account.PhotoRelativeUrl!)?.protectedSalesforceURL((OAuth2Manager.sharedInstance.credentials?.accessToken)!)
+
     accountPhoto.sd_setImageWithURL(account.PhotoFullUrl, placeholderImage: UIImage(named: "account-placeholder"))
 
 

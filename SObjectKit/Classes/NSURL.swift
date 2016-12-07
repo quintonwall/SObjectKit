@@ -27,4 +27,25 @@ public extension NSURL {
         return params
     }
     
+    /**
+     * Returns an NSURL instance that can used to fetch protected salesforce content like photoURLs
+     * parameter: a valid salesforce sessionid or authtoken
+     */
+    public func protectedSalesforceURL(authtoken: String) -> NSURL {
+        
+        
+        assert(self.isHTTPS(), "URL must be HTTPS for protected Salesforce Endpoints.")
+        
+        return NSURL(string: self.absoluteString+"?oauth_token=\(authtoken)")!
+    }
+    
+    public func isHTTPS()->Bool{
+        
+        if(self.absoluteString.hasPrefix("https")){
+            return true
+        }
+        return false
+    }
+    
+    
 }
