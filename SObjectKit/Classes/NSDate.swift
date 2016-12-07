@@ -18,13 +18,15 @@ public extension NSDate {
         }()
     }
     
-    public func toRFC3339String() -> String {
+    //Salesforce uses RFC3339String date format
+    public func toSalesforceString() -> String {
         let formatter = Static.formatter
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.S'Z'"
         return formatter.stringFromDate(self)
     }
     
-    public class func dateFromRFC3339String(string: String) -> NSDate? {
+    //Salesforce uses RFC3339String date format
+    public class func dateFromSalesforceString(string: String) -> NSDate? {
         return dateFromString(string, withFormat: "yyyy-MM-dd'T'HH:mm:ss.S'Z'")
     }
     
