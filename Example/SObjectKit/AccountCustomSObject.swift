@@ -19,8 +19,9 @@ var GlassdoorRating : Int?
      override init(json: JSON) {
         super.init(json: json)
         
-        GlassdoorRating = json["GlassdoorRating__c"].int
-        IsNonProfit = json["IsNonProfit__c"].boolValue
+        let fieldnames = AccountCustomSObject.customFieldNames()
+        GlassdoorRating = json[fieldnames[0]].int
+        IsNonProfit = json[fieldnames[1]].boolValue
         
     }
     
