@@ -66,16 +66,9 @@ public final class Lead : SObject  {
         
     }
     
-    override public class func soqlGetAllStandardFields(id: String?)  -> String {
+    override public class func soqlGetAllFields(id: String?)  -> String {
         
-        var soql = "select Address, AnnualRevenue, CleanStatus, Company, CompanyDunsNumber, ConvertedAccountId, ConvertedContactId, ConvertedDate, ConvertedOpportunityId, CreatedById, CreatedDate, DandbCompanyId, Description, Email, EmailBouncedDate, EmailBouncedReason, Fax, FirstName, GeocodeAccuracy, Id, Industry, IsConverted, IsDeleted, IsUnreadByOwner, Jigsaw, JigsawContactId, LastActivityDate, LastModifiedById, LastModifiedDate, LastName, LastReferencedDate, LastViewedDate, LeadSource, MasterRecordId, MobilePhone, Name, NumberOfEmployees, OwnerId, Phone, PhotoUrl,Rating, Salutation,  Status, SystemModstamp, Title, Website from Lead"
-        
-        if (id ?? "").isEmpty {
-            return soql
-        } else {
-            return "\(soql) where id = '\(id)'"
-        }
-        
+       return configSOQLStatement(id, soqlbase: "select Address, AnnualRevenue, CleanStatus, Company, CompanyDunsNumber, ConvertedAccountId, ConvertedContactId, ConvertedDate, ConvertedOpportunityId, CreatedById, CreatedDate, DandbCompanyId, Description, Email, EmailBouncedDate, EmailBouncedReason, Fax, FirstName, GeocodeAccuracy, Id, Industry, IsConverted, IsDeleted, IsUnreadByOwner, Jigsaw, JigsawContactId, LastActivityDate, LastModifiedById, LastModifiedDate, LastName, LastReferencedDate, LastViewedDate, LeadSource, MasterRecordId, MobilePhone, Name, NumberOfEmployees, OwnerId, Phone, PhotoUrl,Rating, Salutation,  Status, SystemModstamp, Title, Website from Lead")
     }
     
     

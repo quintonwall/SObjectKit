@@ -40,20 +40,13 @@ public final class OpportunityLineItem : SObject  {
         
     }
 
-    override public class func soqlGetAllStandardFields(id: String?)  -> String {
+    override public class func soqlGetAllFields(id: String?)  -> String {
         
-        var soql = "select CreatedById, CreatedDate, Description, Id, IsDeleted, LastModifiedById, LastModifiedDate, ListPrice, Name, OpportunityId, PricebookEntryId, Product2Id, ProductCode, Quantity, ServiceDate, SortOrder, SystemModstamp, TotalPrice, UnitPrice from OpportunityLineItem"
-        
-        if (id ?? "").isEmpty {
-            return soql
-        } else {
-            return "\(soql) where id = '\(id)'"
-        }
-        
+       return configSOQLStatement(id, soqlbase: "select CreatedById, CreatedDate, Description, Id, IsDeleted, LastModifiedById, LastModifiedDate, ListPrice, Name, OpportunityId, PricebookEntryId, Product2Id, ProductCode, Quantity, ServiceDate, SortOrder, SystemModstamp, TotalPrice, UnitPrice from OpportunityLineItem")        
     }
     
     public class func soqlGetLineItemsForOpportunity(opportunityid: String) -> String {
-        return self.soqlGetAllStandardFields(nil)+" where OpportunityId = '\(opportunityid)'"
+        return self.soqlGetAllFields(nil)+" where OpportunityId = '\(opportunityid)'"
     }
 
 

@@ -11,7 +11,8 @@ import SwiftyJSON
 
 
 
-public final class Account : SObject  {
+public class Account : SObject  {
+    
     
     
     public var AccountNumber : String?
@@ -68,15 +69,9 @@ public final class Account : SObject  {
     
     }
     
-    override public class func soqlGetAllStandardFields(id: String?)  -> String {
-        var soql =  "select AccountNumber, AccountSource, AnnualRevenue, BillingAddress, BillingGeocodeAccuracy, CleanStatus, CreatedById, CreatedDate,  DandbCompanyId, Description, DunsNumber, Fax, Id, Industry, IsDeleted, Jigsaw, JigsawCompanyId, LastActivityDate, LastModifiedById, LastModifiedDate, LastReferencedDate, LastViewedDate, MasterRecordId, NaicsCode, NaicsDesc, Name, NumberOfEmployees,  OwnerId, Ownership, ParentId, Phone, PhotoUrl, Rating, ShippingAddress, ShippingGeocodeAccuracy, Sic, SicDesc, Site, SystemModstamp, TickerSymbol, Tradestyle, Type, Website, YearStarted from Account"
-        
-        if (id ?? "").isEmpty {
-            return soql
-        } else {
-            return "\(soql) where id = '\(id)'"
-        }
-        
+    override public class func soqlGetAllFields(id: String?)  -> String {
+       
+        return configSOQLStatement(id, soqlbase: "select AccountNumber, AccountSource, AnnualRevenue, BillingAddress, BillingGeocodeAccuracy, CleanStatus, CreatedById, CreatedDate,  DandbCompanyId, Description, DunsNumber, Fax, Id, Industry, IsDeleted, Jigsaw, JigsawCompanyId, LastActivityDate, LastModifiedById, LastModifiedDate, LastReferencedDate, LastViewedDate, MasterRecordId, NaicsCode, NaicsDesc, Name, NumberOfEmployees,  OwnerId, Ownership, ParentId, Phone, PhotoUrl, Rating, ShippingAddress, ShippingGeocodeAccuracy, Sic, SicDesc, Site, SystemModstamp, TickerSymbol, Tradestyle, Type, Website, YearStarted from Account")
     }
 
     

@@ -136,6 +136,59 @@ By default, SObjectKit is configured with SOQL statements to fetch all standard 
    SalesforceAPI.Query(soql: "Select Id, Name, NextStep From Opportunity").request()
 ```
 
+## Handling Custom Fields on a Standard Object
+Custom fields can be supported by creating a new class which implements the CustomSObject protocol and overriding the customFieldNames() func, plus implementing the init func to map JSON results to fields. In addition, it is recommended to override the populateToCollection func to make it easier for use in your downstream code. The example app includes an AccountCustomSObject which provides support for 2 custom fields on the Account object. 
+```swift
+import Foundation
+import SObjectKit
+import SwiftyJSON
+
+class AccountCustomSObject : Account, CustomSObject {
+
+  var GlassdoorRating : Int?
+  var IsNonProfit : Bool?
+
+
+  override init(json: JSON) {
+    super.init(json: json)
+
+    GlassdoorRating = json["GlassdoorRating__c"].int
+    IsNonProfit = json["IsNonProfit__c"].boolValue
+  }
+
+  // Description: customsobject protocol requires you to implement this method
+  static func customFieldNames() -> [String] {
+    return ["GlassdoorRating__c, IsNonProfit__c"]
+  }
+
+  //
+  // Description: This func is not required to be overridden for custom objects, but it makes it easier for downstream usage
+  //
+  override class func populateToCollection(records : NSArray)  -> [SObject] {
+    var allrecords : [AccountCustomSObject] = []
+
+    let j = JSON(records)
+    for (_, subJson) in j {
+       allrecords.append(AccountCustomSObject(json: subJson))
+    }
+
+    return allrecords
+  }
+}
+
+
+```
+
+SObjectKit will automatically include your custom fields in the soqlGetAllFields func calls to make it super easy to perform the equivalet of a 'select *' statement. The following snippet will retrieve both the custom fields defined in AccountCustomObject and all standard fields defined on Account
+```swift
+ SalesforceAPI.Query(soql: AccountCustomObject.soqlGetAllFields(nil)).request()
+```
+
+
+## Implementing Custom Objects
+Implementing custom objects can be supported by creating a new SObject class. Refer to Account as solid example on what you need to implement.
+
+
 
 ## Working with Extensions
 A number of extensions are included in SObjectKit to make it even easier to work with Salesforce data. The following two functions are likely to be used the most. Check out the API docs for more examples.

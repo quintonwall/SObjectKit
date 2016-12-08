@@ -64,24 +64,17 @@ public final class Contact : SObject  {
         
     }
     
-    override public class func soqlGetAllStandardFields(id: String?)  -> String {
+    override public class func soqlGetAllFields(id: String?)  -> String {
         
-        var soql = "select AccountId, AssistantName, AssistantPhone, Birthdate, CleanStatus, CreatedById, CreatedDate, Department, Description, Email, EmailBouncedDate, EmailBouncedReason, Fax, FirstName, HomePhone, Id, IsDeleted, IsEmailBounced, Jigsaw, JigsawContactId, LastActivityDate, LastCURequestDate, LastCUUpdateDate, LastModifiedById, LastModifiedDate, LastName, LastReferencedDate, LastViewedDate, LeadSource, MailingAddress, MailingGeocodeAccuracy, MasterRecordId, MobilePhone, Name, OtherAddress, OtherGeocodeAccuracy, OtherPhone, OwnerId, Phone, PhotoUrl, ReportsToId, Salutation, SystemModstamp, Title from Contact"
-        
-        if (id ?? "").isEmpty {
-            return soql
-        } else {
-            return "\(soql) where id = '\(id)'"
-        }
-        
+        return configSOQLStatement(id, soqlbase: "select AccountId, AssistantName, AssistantPhone, Birthdate, CleanStatus, CreatedById, CreatedDate, Department, Description, Email, EmailBouncedDate, EmailBouncedReason, Fax, FirstName, HomePhone, Id, IsDeleted, IsEmailBounced, Jigsaw, JigsawContactId, LastActivityDate, LastCURequestDate, LastCUUpdateDate, LastModifiedById, LastModifiedDate, LastName, LastReferencedDate, LastViewedDate, LeadSource, MailingAddress, MailingGeocodeAccuracy, MasterRecordId, MobilePhone, Name, OtherAddress, OtherGeocodeAccuracy, OtherPhone, OwnerId, Phone, PhotoUrl, ReportsToId, Salutation, SystemModstamp, Title from Contact")        
     }
     
     public class func soqlGetContactsForAccount(accountid: String) -> String {
-        return self.soqlGetAllStandardFields(nil)+" where AccountId = '\(accountid)'"
+        return self.soqlGetAllFields(nil)+" where AccountId = '\(accountid)'"
     }
     
     public class func soqlGetContactsWhoReportTo(contactid: String) -> String {
-        return self.soqlGetAllStandardFields(nil)+" where ReportsToId = '\(contactid)'"
+        return self.soqlGetAllFields(nil)+" where ReportsToId = '\(contactid)'"
     }
     
     

@@ -35,20 +35,13 @@ public final class PricebookEntry : SObject  {
         
     }
     
-    override public class func soqlGetAllStandardFields(id: String?)  -> String {
+    override public class func soqlGetAllFields(id: String?)  -> String {
         
-        var soql = "select CreatedById, CreatedDate, Id, IsActive, IsDeleted, LastModifiedById, LastModifiedDate, Name, Pricebook2Id, Product2Id, ProductCode, SystemModstamp, UnitPrice, UseStandardPrice from PricebookEntry"
-        
-        if (id ?? "").isEmpty {
-            return soql
-        } else {
-            return "\(soql) where id = '\(id)'"
-        }
-        
+        return configSOQLStatement(id, soqlbase: "select CreatedById, CreatedDate, Id, IsActive, IsDeleted, LastModifiedById, LastModifiedDate, Name, Pricebook2Id, Product2Id, ProductCode, SystemModstamp, UnitPrice, UseStandardPrice from PricebookEntry")        
     }
     
     public class func soqlGetPricebookEntriesForProduct(productid: String) -> String {
-        return self.soqlGetAllStandardFields(nil)+" where Product2Id = '\(productid)'"
+        return self.soqlGetAllFields(nil)+" where Product2Id = '\(productid)'"
     }
     
     

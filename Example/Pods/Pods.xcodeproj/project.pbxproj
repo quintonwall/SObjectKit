@@ -81,6 +81,7 @@
 		5AD33AA91DF8838F007634A2 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD33AA81DF8838F007634A2 /* Contact.swift */; };
 		5AF1174E1DF88C5400CCB59D /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF1174C1DF88C0600CCB59D /* Product.swift */; };
 		5AF117501DF88EFA00CCB59D /* PricebookEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF1174F1DF88EFA00CCB59D /* PricebookEntry.swift */; };
+		5AF117541DF8B2C000CCB59D /* CustomSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF117531DF8B2C000CCB59D /* CustomSObject.swift */; };
 		5B0C6B9249E98070BF02F6C9408FDA5E /* SDWebImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D58CF89D483459C17BE65EE7B71F6B6 /* SDWebImageDecoder.m */; };
 		5D48F9DCDA1224F7AE610544513311E6 /* UIAlertView+AnyPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = D274ABA78354D814457099441E20B135 /* UIAlertView+AnyPromise.m */; };
 		5F193AFDA8E41A904D4B657769F49A93 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B341731981B1647A937514703BAC582A /* MultipartFormData.swift */; };
@@ -393,6 +394,7 @@
 		5AD33AA81DF8838F007634A2 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		5AF1174C1DF88C0600CCB59D /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		5AF1174F1DF88EFA00CCB59D /* PricebookEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PricebookEntry.swift; sourceTree = "<group>"; };
+		5AF117531DF8B2C000CCB59D /* CustomSObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSObject.swift; sourceTree = "<group>"; };
 		5B1273FB4DF21239690D8578F5DDEE19 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSData+ImageContentType.h"; path = "SDWebImage/NSData+ImageContentType.h"; sourceTree = "<group>"; };
 		5C84E5E91332101CC902793674FEBE41 /* FCAlertView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FCAlertView.h; path = FCAlertView/Classes/FCAlertView.h; sourceTree = "<group>"; };
 		5D3337A6BD52E7943DC92230FC8FBF26 /* SwiftlySalesforce-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftlySalesforce-dummy.m"; sourceTree = "<group>"; };
@@ -832,6 +834,7 @@
 				5AD33AA81DF8838F007634A2 /* Contact.swift */,
 				5AF1174C1DF88C0600CCB59D /* Product.swift */,
 				5AF1174F1DF88EFA00CCB59D /* PricebookEntry.swift */,
+				5AF117531DF8B2C000CCB59D /* CustomSObject.swift */,
 			);
 			name = SObjects;
 			sourceTree = "<group>";
@@ -1746,6 +1749,7 @@
 				316B40472A202A3A61BFECCBE1C7BA24 /* JSON.swift in Sources */,
 				5ABAD6351DF0F6FD00143159 /* Opportunity.swift in Sources */,
 				5AF117501DF88EFA00CCB59D /* PricebookEntry.swift in Sources */,
+				5AF117541DF8B2C000CCB59D /* CustomSObject.swift in Sources */,
 				6567C929800EEF96656F8343BF394538 /* NSDate.swift in Sources */,
 				762D2E8256060931293B78CC4D6717C8 /* NSURL.swift in Sources */,
 				215378F717E5FD30EA388878F32AEDCD /* SObject.swift in Sources */,

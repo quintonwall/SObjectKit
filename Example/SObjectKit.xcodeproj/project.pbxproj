@@ -12,6 +12,7 @@
 		5ABAD6311DF0941800143159 /* AccountTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABAD6301DF0941800143159 /* AccountTableCell.swift */; };
 		5AD1E5A11DF73281003254D0 /* OpportunityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD1E5A01DF73281003254D0 /* OpportunityTableViewController.swift */; };
 		5AD1E5A31DF734D6003254D0 /* OpportunityTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD1E5A21DF734D6003254D0 /* OpportunityTableCell.swift */; };
+		5AF117521DF8A93B00CCB59D /* AccountCustomSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF117511DF8A93B00CCB59D /* AccountCustomSObject.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 		5ABAD6301DF0941800143159 /* AccountTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableCell.swift; sourceTree = "<group>"; };
 		5AD1E5A01DF73281003254D0 /* OpportunityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpportunityTableViewController.swift; sourceTree = "<group>"; };
 		5AD1E5A21DF734D6003254D0 /* OpportunityTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpportunityTableCell.swift; sourceTree = "<group>"; };
+		5AF117511DF8A93B00CCB59D /* AccountCustomSObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCustomSObject.swift; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* SObjectKit_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SObjectKit_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 				5AD1E5A01DF73281003254D0 /* OpportunityTableViewController.swift */,
 				5AD1E5A21DF734D6003254D0 /* OpportunityTableCell.swift */,
+				5AF117511DF8A93B00CCB59D /* AccountCustomSObject.swift */,
 			);
 			name = "Example for SObjectKit";
 			path = SObjectKit;
@@ -375,6 +378,7 @@
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				5ABAD6311DF0941800143159 /* AccountTableCell.swift in Sources */,
+				5AF117521DF8A93B00CCB59D /* AccountCustomSObject.swift in Sources */,
 				5ABAD62E1DF08B8600143159 /* AccountViewController.swift in Sources */,
 				5AD1E5A11DF73281003254D0 /* OpportunityTableViewController.swift in Sources */,
 			);

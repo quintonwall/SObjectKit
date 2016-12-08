@@ -35,16 +35,9 @@ public final class Product : SObject  {
         
     }
     
-    override public class func soqlGetAllStandardFields(id: String?)  -> String {
+    override public class func soqlGetAllFields(id: String?)  -> String {
         
-        var soql = "select CreatedById, CreatedDate, Description, Family, Id, IsActive, IsDeleted, LastModifiedById, LastModifiedDate, LastReferencedDate, LastViewedDate, Name, ProductCode, SystemModstamp from Product2"
-        
-        if (id ?? "").isEmpty {
-            return soql
-        } else {
-            return "\(soql) where id = '\(id)'"
-        }
-        
+        return configSOQLStatement(id, soqlbase: "select CreatedById, CreatedDate, Description, Family, Id, IsActive, IsDeleted, LastModifiedById, LastModifiedDate, LastReferencedDate, LastViewedDate, Name, ProductCode, SystemModstamp from Product2")        
     }
     
     public init(json: JSON) {

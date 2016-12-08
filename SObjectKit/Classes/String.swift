@@ -35,6 +35,14 @@ public extension String {
         }
     }
     
+    func insert(string:String,ind:Int) -> String {
+        return  String(self.characters.prefix(ind)) + string + String(self.characters.suffix(self.characters.count-ind))
+    }
+    
+    func indexOf(string: String) -> Int {
+        return startIndex.distanceTo((rangeOfString(string, options: .LiteralSearch, range: nil, locale: nil)?.startIndex)!)
+    }
+    
     
 }
 

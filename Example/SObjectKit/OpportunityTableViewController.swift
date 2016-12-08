@@ -38,7 +38,7 @@ class OpportunityTableViewController: UITableViewController {
         
         var soqlstmt : String = ""
         if (parentAccount == nil) {
-            soqlstmt = Opportunity.soqlGetAllStandardFields(nil)
+            soqlstmt = Opportunity.soqlGetAllFields(nil)
         } else {
             soqlstmt = Opportunity.soqlGetOpportunitiesForAccount(parentAccount!.id!)
         }

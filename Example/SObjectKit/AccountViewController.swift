@@ -29,35 +29,34 @@ class AccountViewController: UITableViewController {
         //let bundle = NSBundle(forClass: self.dynamicType)
        // tableView.registerNib(UINib(nibName: "AccountTableCellView", bundle: NSBundle(forClass: AccountTableCellView.self)), forCellReuseIdentifier: "accountcell")
 
-        loadData()
-
+      loadData()
         
     }
     
     func loadData() {
         
-     
+        
         
         firstly {
-             SalesforceAPI.Query(soql: Account.soqlGetAllStandardFields(nil)).request()
+            SalesforceAPI.Query(soql: Account.soqlGetAllFields(nil)).request()
             
-        }.then {
-            ( result) -> () in
+            }.then {
+                ( result) -> () in
                 self.allAccounts = Account.populateToCollection(result["records"] as! NSArray) as! [Account]
-            
-        }.always {
+                
+            }.always {
                 self.tableView.reloadData()
                 self.refreshControl?.endRefreshing()
-            
-        }.error { _ in
+                
+            }.error { _ in
                 let fcdialog = FCAlertView()
                 fcdialog.showAlertInView(self, withTitle: "Kaboom!", withSubtitle: "Something gone bust.", withCustomImage: UIImage(named: "close-x"), withDoneButtonTitle: "OK", andButtons: nil)
                 fcdialog.colorScheme = fcdialog.flatGreen
                 fcdialog.dismissOnOutsideTouch = true
         }
     }
-    
-    func handleRefresh(refreshControl: UIRefreshControl) {
+
+      func handleRefresh(refreshControl: UIRefreshControl) {
         loadData()
     }
     

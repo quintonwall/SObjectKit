@@ -11,7 +11,7 @@
 import SwiftyJSON
 
 
-public class SObject {
+public class SObject : NSObject {
     
     
     //update this each time we update the sobjects
@@ -60,8 +60,29 @@ public class SObject {
           return "\(soql) where id = '\(id)'"
         }
     */
-    public class func soqlGetAllStandardFields(id: String?) -> String {
+    public class func soqlGetAllFields(id: String?) -> String {
         preconditionFailure("This method has not been overridden by SObject implementation.")
+        
+    }
+    
+  
+     internal class func configSOQLStatement(id: String?, soqlbase: String) -> String {
+    
+        var customfields : String = ""
+        
+        if self is CustomSObject.Type {
+            let className = NSStringFromClass(self as! AnyClass)
+            let aClass = NSClassFromString(className) as! CustomSObject.Type
+            customfields = ", "+aClass.customFieldNames().joinWithSeparator(",")
+        }
+        
+        var finalsoql = soqlbase.insert(customfields, ind: soqlbase.indexOf(" from"))
+        
+        if (id ?? "").isEmpty {
+            return finalsoql
+        } else {
+            return "\(finalsoql) where id = '\(id)'"
+        }
         
     }
     
