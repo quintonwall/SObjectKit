@@ -5,10 +5,11 @@
 # Any lines starting with a # are optional, but their use is encouraged
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
 #
-
+# point release in version indicates salesforce API version compliance.
+#
 Pod::Spec.new do |s|
   s.name             = 'SObjectKit'
-  s.version          = '0.1.0'
+  s.version          = '0.1.37'
   s.summary          = 'SObjectKit makes working with Salesforce data easy.'
 
 # This description is used to generate tags and improve search results.
