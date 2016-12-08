@@ -76,7 +76,7 @@ public class SObject : NSObject {
             customfields = ", "+aClass.customFieldNames().joinWithSeparator(",")
         }
         
-        var finalsoql = soqlbase.insert(customfields, ind: soqlbase.indexOf(" from"))
+        let finalsoql = soqlbase.insert(customfields, ind: soqlbase.indexOf(" from"))
         
         if (id ?? "").isEmpty {
             return finalsoql
