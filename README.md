@@ -137,7 +137,10 @@ By default, SObjectKit is configured with SOQL statements to fetch all standard 
 ```
 
 ## Handling Custom Fields on a Standard Object
-Custom fields can be supported by creating a new class which implements the CustomSObject protocol and overriding the customFieldNames() func, plus implementing the init func to map JSON results to fields. In addition, it is recommended to override the populateToCollection func to make it easier for use in your downstream code. The example app includes an AccountCustomSObject which provides support for 2 custom fields on the Account object. 
+Custom fields can be supported by creating a new class which implements the CustomSObject protocol and overriding the customFieldNames() func, plus implementing the init func to map JSON results to fields. In addition, it is recommended to override the populateToCollection func to make it easier for use in your downstream code. Whilst this may seem like additional effort (vs. simply providing a func to pass in custom field names), this approach provides convenient mapping to strongly typed objects. (this is the whole point of SObjectKit, after all) which saves significant development time by limiting proliferation of fieldnames throughout your code, and duplicate code to handle parsing json in multiple places.
+
+The example app includes an AccountCustomSObject which provides support for 2 custom fields on the Account object. 
+
 ```swift
 import Foundation
 import SObjectKit
