@@ -157,8 +157,9 @@ class AccountCustomSObject : Account, CustomSObject {
   override init(json: JSON) {
     super.init(json: json)
 
-    GlassdoorRating = json["GlassdoorRating__c"].int
-    IsNonProfit = json["IsNonProfit__c"].boolValue
+    let fieldnames = AccountCustomSObject.customFieldNames()
+    GlassdoorRating = json[fieldnames[0]].int
+    IsNonProfit = json[fieldnames[1]].boolValue
   }
 
   // Description: customsobject protocol requires you to implement this method
