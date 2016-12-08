@@ -14,12 +14,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoginViewPresentable {
 
     var window: UIWindow?
     
-    //note: this connected app is set up in my (quinton) org. You can use it for the test up, but you
-    //will need to create your own connected app by following the instructions here:
+    //You will need to create your own connected app by following the instructions here:
     // https://help.salesforce.com/articleView?id=connected_app_create.htm
-    let consumerKey = "3MVG9uudbyLbNPZNuIUUb1Twl.Jc6DArIF.i47pvYoR5ewGxErDz55CStWoSDpTxQKetVep7YVXKRK3IGFGDg"
+    let consumerKey = "ADD-YOUR-CONSUMER-KEY-HERE"
+    //eg: sobjectkit://success
     let redirectURL = NSURL(string: "sobjectkit://success")!
-    let hostname = "na30.lightning.force.com"
+    //eg: na30.lightning.force.com
+    let hostname = "naXX.lightning.force.com"
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
