@@ -46,7 +46,7 @@ SObjectKit provides implementations of all the Standard Salesforce Objects (SObj
 func loadData() {
 
   firstly {
-    SalesforceAPI.Query(soql: Account.soqlGetAllStandardFields(nil)).request()
+    SalesforceAPI.Query(soql: Account.soqlGetAllFields(nil)).request()
 
   }.then {
    ( result) -> () in
@@ -121,12 +121,12 @@ By default, SObjectKit is configured with SOQL statements to fetch all standard 
 
 ### Fetch all fields for an sobject type
 ```swift
- let soqlstmt = Opportunity.soqlGetAllStandardFields(nil)
+ let soqlstmt = Opportunity.soqlGetAllFields(nil)
 ```
 
 ### Fetch all fields for a specific record
 ```swift
- let soqlstmt = Opportunity.soqlGetAllStandardFields(recordId)
+ let soqlstmt = Opportunity.soqlGetAllFields(recordId)
 
 ```
 
