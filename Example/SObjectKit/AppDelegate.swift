@@ -14,7 +14,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoginViewPresentable {
 
     var window: UIWindow?
     
-    //note: connected app set up in dash app org
+    //note: this connected app is set up in my (quinton) org. You can use it for the test up, but you
+    //will need to create your own connected app by following the instructions here:
+    // https://help.salesforce.com/articleView?id=connected_app_create.htm
     let consumerKey = "3MVG9uudbyLbNPZNuIUUb1Twl.Jc6DArIF.i47pvYoR5ewGxErDz55CStWoSDpTxQKetVep7YVXKRK3IGFGDg"
     let redirectURL = NSURL(string: "sobjectkit://success")!
     let hostname = "na30.lightning.force.com"
