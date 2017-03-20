@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         loginButton.layer.borderWidth = 1.0
-        loginButton.layer.borderColor = UIColor.lightGrayColor().CGColor
+        loginButton.layer.borderColor = UIColor.lightGray.cgColor
         loginButton.layer.cornerRadius = 5.0
     }
 
@@ -28,25 +28,24 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func loginTapped(sender: AnyObject) {
+    @IBAction func loginTapped(_ sender: AnyObject) {
         showLogMeInScreen()
     }
     
-    private func showLogMeInScreen() {
+    fileprivate func showLogMeInScreen() {
         
         firstly {
-            SalesforceAPI.Identity.request()
+            salesforce.identity()
             
             }.then {_ in
-                self.dismissViewControllerAnimated(true, completion: {
+                self.dismiss(animated: true, completion: {
                    print("dismissing")
-                    
+                self.performSegue(withIdentifier: "accounts", sender: self)
                 })
-            }.then { _ in
-                self.performSegueWithIdentifier("accounts", sender: self)
-            }.error { _ in
+            }.catch { error in
                 let fcdialog = FCAlertView()
-                fcdialog.showAlertInView(self, withTitle: "Kaboom!", withSubtitle: "Something gone bust.", withCustomImage: UIImage(named: "close-x"), withDoneButtonTitle: "OK", andButtons: nil)
+                
+                fcdialog.showAlert(inView: self, withTitle: "Kaboom!", withSubtitle: "Something gone bust.", withCustomImage: UIImage(named: "close-x"), withDoneButtonTitle: "OK", andButtons: nil)
                 fcdialog.colorScheme = fcdialog.flatGreen
                 fcdialog.dismissOnOutsideTouch = true
         }

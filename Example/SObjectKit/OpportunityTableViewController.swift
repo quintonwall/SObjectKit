@@ -23,14 +23,14 @@ class OpportunityTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        refreshControl?.addTarget(self, action: #selector(OpportunityTableViewController.handleRefresh), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl?.addTarget(self, action: #selector(OpportunityTableViewController.handleRefresh), for: UIControlEvents.valueChanged)
         
         loadData()
     }
     
    
     
-    func handleRefresh(refreshControl: UIRefreshControl) {
+    func handleRefresh(_ refreshControl: UIRefreshControl) {
         loadData()
     }
     
@@ -44,30 +44,30 @@ class OpportunityTableViewController: UITableViewController {
         }
         
         firstly {
-            SalesforceAPI.Query(soql: soqlstmt).request()
+            salesforce.query(soql: soqlstmt)
         }.then {
-                ( result) -> () in
-                self.allOpportunities = Opportunity.populateToCollection(result["records"] as! NSArray) as! [Opportunity]
+            ( result) -> () in
+                self.allOpportunities = Opportunity.populateToCollection(result.records as NSArray) as! [Opportunity]
                 
             }.always {
                 self.tableView.reloadData()
                 self.refreshControl?.endRefreshing()
                 
-            }.error { _ in
+            }.catch { error in
                 let fcdialog = FCAlertView()
-                fcdialog.showAlertInView(self, withTitle: "Kaboom!", withSubtitle: "Something gone bust.", withCustomImage: UIImage(named: "close-x"), withDoneButtonTitle: "OK", andButtons: nil)
+                fcdialog.showAlert(inView: self, withTitle: "Kaboom!", withSubtitle: "Something gone bust.", withCustomImage: UIImage(named: "close-x"), withDoneButtonTitle: "OK", andButtons: nil)
                 fcdialog.colorScheme = fcdialog.flatGreen
                 fcdialog.dismissOnOutsideTouch = true
         }
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("opportunitycell", forIndexPath: indexPath) as! OpportunityTableCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "opportunitycell", for: indexPath) as! OpportunityTableCell
         cell.bind(allOpportunities[indexPath.item])
         return cell
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return self.allOpportunities.count
     }
@@ -77,8 +77,8 @@ class OpportunityTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func closeOpty(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: {})
+    @IBAction func closeOpty(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: {})
     }
 
 

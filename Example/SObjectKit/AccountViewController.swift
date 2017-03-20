@@ -21,7 +21,7 @@ class AccountViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        refreshControl?.addTarget(self, action: #selector(AccountViewController.handleRefresh), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl?.addTarget(self, action: #selector(AccountViewController.handleRefresh), for: UIControlEvents.valueChanged)
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -38,43 +38,43 @@ class AccountViewController: UITableViewController {
         
         
         firstly {
-            SalesforceAPI.Query(soql: Account.soqlGetAllFields(nil)).request()
+            salesforce.query(soql: Account.soqlGetAllFields(nil))
             
             }.then {
                 ( result) -> () in
-                self.allAccounts = Account.populateToCollection(result["records"] as! NSArray) as! [Account]
+                self.allAccounts = Account.populateToCollection(result.records as NSArray) as! [Account]
                 
             }.always {
                 self.tableView.reloadData()
                 self.refreshControl?.endRefreshing()
                 
-            }.error { _ in
+            }.catch { error in
                 let fcdialog = FCAlertView()
-                fcdialog.showAlertInView(self, withTitle: "Kaboom!", withSubtitle: "Something gone bust.", withCustomImage: UIImage(named: "close-x"), withDoneButtonTitle: "OK", andButtons: nil)
+                fcdialog.showAlert(inView: self, withTitle: "Kaboom!", withSubtitle: "Something gone bust.", withCustomImage: UIImage(named: "close-x"), withDoneButtonTitle: "OK", andButtons: nil)
                 fcdialog.colorScheme = fcdialog.flatGreen
                 fcdialog.dismissOnOutsideTouch = true
         }
     }
 
-      func handleRefresh(refreshControl: UIRefreshControl) {
+      func handleRefresh(_ refreshControl: UIRefreshControl) {
         loadData()
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("accountcell", forIndexPath: indexPath) as! AccountTableCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "accountcell", for: indexPath) as! AccountTableCell
         cell.bind(allAccounts[indexPath.item])
         return cell
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return self.allAccounts.count
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! AccountTableCell
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! AccountTableCell
         selectedAccount = cell.account
-        performSegueWithIdentifier("OpportunitiesForAccount", sender: self)
+        performSegue(withIdentifier: "OpportunitiesForAccount", sender: self)
         
     }
     
@@ -84,9 +84,9 @@ class AccountViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "OpportunitiesForAccount" {
-            let navController = segue.destinationViewController as! UINavigationController
+            let navController = segue.destination as! UINavigationController
             let destVC = navController.topViewController as! OpportunityTableViewController
             destVC.parentAccount = self.selectedAccount
         }

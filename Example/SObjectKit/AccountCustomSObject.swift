@@ -33,7 +33,7 @@ var GlassdoorRating : Int?
     //
     // Description: This func is not required to be overridden for custom objects, but it makes it easier for downstream usage
     //
-    override class func populateToCollection(records : NSArray)  -> [SObject] {
+    override class func populateToCollection(_ records : NSArray)  -> [SObject] {
         var allrecords : [AccountCustomSObject] = []
         
         let j = JSON(records)

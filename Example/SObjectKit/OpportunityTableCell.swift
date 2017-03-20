@@ -12,15 +12,15 @@ import SObjectKit
 import SwiftlySalesforce
 
 
-public class OpportunityTableCell : UITableViewCell {
+open class OpportunityTableCell : UITableViewCell {
     
-    private var opty : Opportunity!
+    fileprivate var opty : Opportunity!
     
     @IBOutlet weak var optyIdLabel: UILabel!
     @IBOutlet weak var optyNameLabel: UILabel!
     
     
-    public func bind(sobject : Opportunity) {
+    open func bind(_ sobject : Opportunity) {
         self.opty = sobject
         self.optyIdLabel.text = sobject.id
         self.optyNameLabel.text = sobject.Name
