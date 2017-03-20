@@ -45,7 +45,7 @@ SObjectKit provides implementations of all the Standard Salesforce Objects (SObj
 func loadData() {
 
   firstly {
-    SalesforceAPI.query(soql: Account.soqlGetAllFields(nil))
+    salesforce.query(soql: Account.soqlGetAllFields(nil))
 
   }.then {
    ( result) -> () in
@@ -85,7 +85,8 @@ override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath:
     //you need to retrieve the hostname from your SDK that you are using to connect to salesforce, and append the accessToken...messy I know!
 
     //In this sample app, I am using SwiftlySalesforce and then storing it on my account object for convenience
-account.PhotoFullUrl = NSURL(string: "https://"+OAuth2Manager.sharedInstance.hostname+account.PhotoRelativeUrl!)?.protectedSalesforceURL((OAuth2Manager.sharedInstance.credentials?.accessToken)!)
+
+ account.PhotoFullUrl = URL(string: "https://"+salesforce.authManager.configuration.loginHost+account.PhotoRelativeUrl!)?.protectedSalesforceURL((salesforce.authManager.authData?.accessToken)!)
 
     accountPhoto.sd_setImageWithURL(account.PhotoFullUrl, placeholderImage: UIImage(named: "account-placeholder"))
 
@@ -102,14 +103,14 @@ account.PhotoFullUrl = NSURL(string: "https://"+OAuth2Manager.sharedInstance.hos
 The Saleforce REST API doesn't fetch related children records (of course, you can write your own SOQL to do this). SObjectKit models this approach, but provides convenient collection variables on SObject types. Developers can use these collections to easily manage related data once fetched from Salesforce.
 ```swift
 firstly {
-   SalesforceAPI.Query(soql: Opportunity.soqlGetOpportunitiesForAccount(accountid)).request()
+   salesforce.query(soql: Opportunity.soqlGetOpportunitiesForAccount(accountid))
 
 }.then {
   ( result) -> () in
-     self.account.opportunities = Opportunity.populateToCollection(result["records"] as! NSArray) as! [Opportunity]
+     self.account.opportunities = Opportunity.populateToCollection(result.records as NSArray) as! [Opportunity]
 }.always {
  //do something
-}.error { _ in
+}.catch { error in
 //do some error handling
 }
 
@@ -132,7 +133,7 @@ By default, SObjectKit is configured with SOQL statements to fetch all standard 
 ### write your own query with just the fields you want
 ```swift
   //Using SwiftlySalesforce to handle comms with Salesforce
-   SalesforceAPI.Query(soql: "Select Id, Name, NextStep From Opportunity").request()
+   salesforce.query(soql: "Select Id, Name, NextStep From Opportunity")
 ```
 
 ## Handling Custom Fields on a Standard Object
@@ -186,7 +187,7 @@ class AccountCustomSObject : Account, CustomSObject {
 
 SObjectKit will automatically include your custom fields in the soqlGetAllFields func calls to make it super easy to perform the equivalet of a 'select *' statement. The following snippet will retrieve both the custom fields defined in AccountCustomObject and all standard fields defined on Account
 ```swift
- SalesforceAPI.Query(soql: AccountCustomObject.soqlGetAllFields(nil)).request()
+ salesforce.query(soql: AccountCustomObject.soqlGetAllFields(nil))
 ```
 
 
