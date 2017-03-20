@@ -16,12 +16,12 @@ public final class Contact : SObject  {
     public var AccountId : String?
     public var AssistantName : String?
     public var AssistantPhone : String?
-    public var Birthdate : NSDate?
+    public var Birthdate : Date?
     public var CleanStatus : String?
     public var Department : String?
     public var Description : String?
     public var Email : String?
-    public var EmailBouncedDate : NSDate?
+    public var EmailBouncedDate : Date?
     public var EmailBouncedReason : String?
     public var Fax : String?
     public var FirstName : String?
@@ -30,12 +30,12 @@ public final class Contact : SObject  {
     public var IsEmailBounced : Bool?
     public var Jigsaw : String?
     public var JigsawContactId : String?
-    public var LastActivityDate : NSDate?
-    public var LastCURequestDate : NSDate?
-    public var LastCUUpdateDate : NSDate?
+    public var LastActivityDate : Date?
+    public var LastCURequestDate : Date?
+    public var LastCUUpdateDate : Date?
     public var LastName : String?
-    public var LastReferencedDate : NSDate?
-    public var LastViewedDate : NSDate?
+    public var LastReferencedDate : Date?
+    public var LastViewedDate : Date?
     public var LeadSource : String?
     public var MailingAddress : Address = Address()
     public var MasterRecordId : String?
@@ -47,12 +47,12 @@ public final class Contact : SObject  {
     public var Phone : String?
      /// Description: only returns a relative URL. You need to add your instance name to it, and store it in PhotoFullURL
     public var PhotoUrl : String?
-    public var PhotoFullUrl : NSURL?
+    public var PhotoFullUrl : URL?
     public var ReportsToId : String?
     public var Salutation : String?
     public var Title : String?
     
-    override public class func populateToCollection(records : NSArray)  -> [SObject] {
+    override public class func populateToCollection(_ records : NSArray)  -> [SObject] {
         var allrecords : [Contact] = []
         
         let j = JSON(records)
@@ -64,16 +64,16 @@ public final class Contact : SObject  {
         
     }
     
-    override public class func soqlGetAllFields(id: String?)  -> String {
+    override public class func soqlGetAllFields(_ id: String?)  -> String {
         
         return configSOQLStatement(id, soqlbase: "select AccountId, AssistantName, AssistantPhone, Birthdate, CleanStatus, CreatedById, CreatedDate, Department, Description, Email, EmailBouncedDate, EmailBouncedReason, Fax, FirstName, HomePhone, Id, IsDeleted, IsEmailBounced, Jigsaw, JigsawContactId, LastActivityDate, LastCURequestDate, LastCUUpdateDate, LastModifiedById, LastModifiedDate, LastName, LastReferencedDate, LastViewedDate, LeadSource, MailingAddress, MailingGeocodeAccuracy, MasterRecordId, MobilePhone, Name, OtherAddress, OtherGeocodeAccuracy, OtherPhone, OwnerId, Phone, PhotoUrl, ReportsToId, Salutation, SystemModstamp, Title from Contact")        
     }
     
-    public class func soqlGetContactsForAccount(accountid: String) -> String {
+    public class func soqlGetContactsForAccount(_ accountid: String) -> String {
         return self.soqlGetAllFields(nil)+" where AccountId = '\(accountid)'"
     }
     
-    public class func soqlGetContactsWhoReportTo(contactid: String) -> String {
+    public class func soqlGetContactsWhoReportTo(_ contactid: String) -> String {
         return self.soqlGetAllFields(nil)+" where ReportsToId = '\(contactid)'"
     }
     

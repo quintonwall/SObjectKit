@@ -23,7 +23,7 @@ public final class PricebookEntry : SObject  {
     public var Product2Id : String?
     public var Pricebook2Id : String?
     
-    override public class func populateToCollection(records : NSArray)  -> [SObject] {
+    override public class func populateToCollection(_ records : NSArray)  -> [SObject] {
         var allrecords : [PricebookEntry] = []
         
         let j = JSON(records)
@@ -35,12 +35,12 @@ public final class PricebookEntry : SObject  {
         
     }
     
-    override public class func soqlGetAllFields(id: String?)  -> String {
+    override public class func soqlGetAllFields(_ id: String?)  -> String {
         
         return configSOQLStatement(id, soqlbase: "select CreatedById, CreatedDate, Id, IsActive, IsDeleted, LastModifiedById, LastModifiedDate, Name, Pricebook2Id, Product2Id, ProductCode, SystemModstamp, UnitPrice, UseStandardPrice from PricebookEntry")        
     }
     
-    public class func soqlGetPricebookEntriesForProduct(productid: String) -> String {
+    public class func soqlGetPricebookEntriesForProduct(_ productid: String) -> String {
         return self.soqlGetAllFields(nil)+" where Product2Id = '\(productid)'"
     }
     

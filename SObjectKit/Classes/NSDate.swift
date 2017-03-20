@@ -8,11 +8,11 @@
 
 import Foundation
 
-public extension NSDate {
+public extension Date {
     
-    private struct Static {
-        static var formatter: NSDateFormatter = {
-            let formatter = NSDateFormatter()
+    fileprivate struct Static {
+        static var formatter: DateFormatter = {
+            let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.S'Z'"
             return formatter
         }()
@@ -22,43 +22,43 @@ public extension NSDate {
     public func toSalesforceString() -> String {
         let formatter = Static.formatter
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.S'Z'"
-        return formatter.stringFromDate(self)
+        return formatter.string(from: self)
     }
     
     //Salesforce uses RFC3339String date format
-    public class func dateFromSalesforceString(string: String) -> NSDate? {
+    public static func dateFromSalesforceString(_ string: String) -> Date? {
         return dateFromString(string, withFormat: "yyyy-MM-dd'T'HH:mm:ss.S'Z'")
     }
     
     public func toPrettyString() -> String {
         let formatter = Static.formatter
         formatter.dateFormat = "E MMM dd, yyyy 'at' h:mm a"
-        return formatter.stringFromDate(self)
+        return formatter.string(from: self)
     }
     
     public func toShortPrettyString() -> String {
         let formatter = Static.formatter
         formatter.dateFormat = "MM/dd/yy"
-        return formatter.stringFromDate(self)
+        return formatter.string(from: self)
     }
     
-    public class func dateFromString(dateString: String, withFormat format: String) -> NSDate? {
+    public static func dateFromString(_ dateString: String, withFormat format: String) -> Date? {
         let formatter = Static.formatter
         formatter.dateFormat = format
-        return formatter.dateFromString(dateString)
+        return formatter.date(from: dateString)
     }
     
-    public func beginningOfDay() -> NSDate {
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([.Year, .Month, .Day], fromDate: self)
-        return calendar.dateFromComponents(components)!
+    public func beginningOfDay() -> Date {
+        let calendar = Calendar.current
+        let components = (calendar as NSCalendar).components([.year, .month, .day], from: self)
+        return calendar.date(from: components)!
     }
     
-    public func endOfDay() -> NSDate {
-        let components = NSDateComponents()
+    public func endOfDay() -> Date {
+        var components = DateComponents()
         components.day = 1
-        var date = NSCalendar.currentCalendar().dateByAddingComponents(components, toDate: self.beginningOfDay(), options: [])!
-        date = date.dateByAddingTimeInterval(-1)
+        var date = (Calendar.current as NSCalendar).date(byAdding: components, to: self.beginningOfDay(), options: [])!
+        date = date.addingTimeInterval(-1)
         return date
     }
     

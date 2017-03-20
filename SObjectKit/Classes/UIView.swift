@@ -11,11 +11,11 @@ import UIKit
 public extension UIView {
     
     public func makeRound() {
-        self.contentMode = .ScaleAspectFill;
+        self.contentMode = .scaleAspectFill;
         self.clipsToBounds = true;
         var f = self.frame;
-        let w = CGRectGetWidth(f);
-        let h = CGRectGetHeight(f);
+        let w = f.width;
+        let h = f.height;
         var corner = w;
         if (h > w) { // Portrait Orientation
             f.size.height = w;
@@ -27,14 +27,14 @@ public extension UIView {
         self.layer.cornerRadius = (corner / 2);
     }
     
-    public func makeRoundWithBorder(width width: CGFloat, color: UIColor) {
+    public func makeRoundWithBorder(width: CGFloat, color: UIColor) {
         makeRound()
         layer.borderWidth = width
-        layer.borderColor = color.CGColor
+        layer.borderColor = color.cgColor
     }
     
-    public class func loadFromNibNamed(nibNamed: String, bundle : NSBundle? = nil) -> UIView? {
-        return UINib(nibName: nibNamed, bundle: bundle).instantiateWithOwner(nil, options: nil).first as? UIView
+    public class func loadFromNibNamed(_ nibNamed: String, bundle : Bundle? = nil) -> UIView? {
+        return UINib(nibName: nibNamed, bundle: bundle).instantiate(withOwner: nil, options: nil).first as? UIView
     }
     
 }
@@ -45,9 +45,9 @@ public extension UIViewLoading where Self : UIView {
     
     public static func loadFromNib() -> Self {
         let nibName = "\(self)".characters.split{$0 == "."}.map(String.init).last!
-        let bundle = NSBundle(forClass: Self.self)
+        let bundle = Bundle(for: Self.self)
         let nib = UINib(nibName: nibName, bundle: bundle)
-        return nib.instantiateWithOwner(self, options: nil).first as! Self
+        return nib.instantiate(withOwner: self, options: nil).first as! Self
     }
     
 }

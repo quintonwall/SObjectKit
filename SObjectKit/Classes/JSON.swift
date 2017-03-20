@@ -10,13 +10,13 @@
 import SwiftyJSON
 
 extension JSON {
-    public var date: NSDate? {
+    public var date: Date? {
         get {
             if let str = self.string {
-                let dateFormatter = NSDateFormatter()
+                let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd"
-                dateFormatter.timeZone = NSTimeZone(name: "UTC")
-                let date = dateFormatter.dateFromString(str)
+                dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone!
+                let date = dateFormatter.date(from: str)
                 return date
                 
             }
@@ -24,13 +24,13 @@ extension JSON {
         }
     }
     
-    public var systemdate: NSDate? {
+    public var systemdate: Date? {
         get {
             if let str = self.string {
-                let dateFormatter = NSDateFormatter()
+                let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.AAZZZZZ"
-                dateFormatter.timeZone = NSTimeZone(name: "UTC")
-                let date = dateFormatter.dateFromString(str)
+                dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone!
+                let date = dateFormatter.date(from: str)
                 
                 return date
                 

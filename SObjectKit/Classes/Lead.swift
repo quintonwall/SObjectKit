@@ -18,12 +18,12 @@ public final class Lead : SObject  {
     public var CompanyDunsNumber : String?
     public var ConvertedAccountId : String?
     public var ConvertedContactId : String?
-    public var ConvertedDate : NSDate?
+    public var ConvertedDate : Date?
     public var ConvertedOpportunityId : String?
     public var DandbCompanyId : String?
     public var Description : String?
     public var Email : String?
-    public var EmailBouncedDate : NSDate?
+    public var EmailBouncedDate : Date?
     public var EmailBouncedReason : String?
     public var Fax : String?
     public var FirstName : String?
@@ -33,10 +33,10 @@ public final class Lead : SObject  {
     public var IsUnreadByOwner : Bool?
     public var Jigsaw : String?
     public var JigsawContactId : String?
-    public var LastActivityDate : NSDate?
+    public var LastActivityDate : Date?
     public var LastName : String?
-    public var LastReferencedDate : NSDate?
-    public var LastViewedDate : NSDate?
+    public var LastReferencedDate : Date?
+    public var LastViewedDate : Date?
     public var LeadSource : String?
     public var MasterRecordId : String?
     public var MobilePhone : String?
@@ -46,15 +46,15 @@ public final class Lead : SObject  {
     public var Phone : String?
     //only returns a relative URL. You need to add your instance name to it, and store it in PhotoFullURL
     public var PhotoUrl : String?
-    public var PhotoFullUrl : NSURL?
+    public var PhotoFullUrl : URL?
     public var Rating : String?
     public var Salutation : String?
     public var Status : String?
     public var Title : String?
-    public var Website : NSURL?
+    public var Website : URL?
     
     
-      override public class func populateToCollection(records : NSArray)  -> [SObject] {
+      override public class func populateToCollection(_ records : NSArray)  -> [SObject] {
         var allrecords : [Lead] = []
         
         let j = JSON(records)
@@ -66,7 +66,7 @@ public final class Lead : SObject  {
         
     }
     
-    override public class func soqlGetAllFields(id: String?)  -> String {
+    override public class func soqlGetAllFields(_ id: String?)  -> String {
         
        return configSOQLStatement(id, soqlbase: "select Address, AnnualRevenue, CleanStatus, Company, CompanyDunsNumber, ConvertedAccountId, ConvertedContactId, ConvertedDate, ConvertedOpportunityId, CreatedById, CreatedDate, DandbCompanyId, Description, Email, EmailBouncedDate, EmailBouncedReason, Fax, FirstName, GeocodeAccuracy, Id, Industry, IsConverted, IsDeleted, IsUnreadByOwner, Jigsaw, JigsawContactId, LastActivityDate, LastModifiedById, LastModifiedDate, LastName, LastReferencedDate, LastViewedDate, LeadSource, MasterRecordId, MobilePhone, Name, NumberOfEmployees, OwnerId, Phone, PhotoUrl,Rating, Salutation,  Status, SystemModstamp, Title, Website from Lead")
     }
@@ -118,7 +118,7 @@ public final class Lead : SObject  {
         Salutation = json["Salutation"].stringValue
         Status = json["Status"].stringValue
         Title = json["Title"].stringValue
-        Website = json["Website"].URL
+        Website = json["Website"].url
     }
 
 }

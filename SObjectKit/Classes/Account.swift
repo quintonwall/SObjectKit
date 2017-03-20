@@ -11,53 +11,53 @@ import SwiftyJSON
 
 
 
-public class Account : SObject  {
+open class Account : SObject  {
     
     
     
-    public var AccountNumber : String?
-    public var AccountSource : String?
-    public var AnnualRevenue : Double = 0.0
-    public var BillingAddress : Address = Address()
-    public var CleanStatus : String?
-    public var DandbCompanyId : String?
-    public var Description : String?
-    public var DunsNumber : String?
-    public var Fax : String?
-    public var Industry : String?
-    public var Jigsaw : String?
-    public var JigsawCompanyId : String?
-    public var LastActivityDate : NSDate?
-    public var LastReferencedDate : NSDate?
-    public var LastViewedDate : NSDate?
-    public var MasterRecordId : String?
-    public var NaicsCode : String?
-    public var NaicsDesc : String?
-    public var Name : String?
-    public var NumberOfEmployees : Int?
-    public var Ownership : String?
-    public var ParentId : String?
-    public var Phone : String?
+    open var AccountNumber : String?
+    open var AccountSource : String?
+    open var AnnualRevenue : Double = 0.0
+    open var BillingAddress : Address = Address()
+    open var CleanStatus : String?
+    open var DandbCompanyId : String?
+    open var Description : String?
+    open var DunsNumber : String?
+    open var Fax : String?
+    open var Industry : String?
+    open var Jigsaw : String?
+    open var JigsawCompanyId : String?
+    open var LastActivityDate : Date?
+    open var LastReferencedDate : Date?
+    open var LastViewedDate : Date?
+    open var MasterRecordId : String?
+    open var NaicsCode : String?
+    open var NaicsDesc : String?
+    open var Name : String?
+    open var NumberOfEmployees : Int?
+    open var Ownership : String?
+    open var ParentId : String?
+    open var Phone : String?
     /// Description: only returns a relative URL. You need to add your instance name to it, and store it in PhotoFullURL
-    public var PhotoRelativeUrl : String?
-    public var PhotoFullUrl : NSURL?
-    public var Rating : String?
-    public var ShippingAddress : Address = Address()
-    public var Sic : String?
-    public var SicDesc : String?
-    public var TickerSymbol : String?
-    public var Tradestyle : String?
-    public var Website : NSURL?
-    public var YearStarted : String?
+    open var PhotoRelativeUrl : String?
+    open var PhotoFullUrl : URL?
+    open var Rating : String?
+    open var ShippingAddress : Address = Address()
+    open var Sic : String?
+    open var SicDesc : String?
+    open var TickerSymbol : String?
+    open var Tradestyle : String?
+    open var Website : URL?
+    open var YearStarted : String?
     
     /// Description: stores related opportunities. This is not populated in init (through results payload). Dev must store themselves.
-    public var opportunities : [Opportunity] = []
+    open var opportunities : [Opportunity] = []
      /// Description: stores related opportunities. This is not populated in init (through results payload). Dev must store themselves.
-    public var contacts : [Contact] = []
+    open var contacts : [Contact] = []
   
 
     
-    override public class func populateToCollection(records : NSArray)  -> [SObject] {
+    override open class func populateToCollection(_ records : NSArray)  -> [SObject] {
         var allrecords : [Account] = []
         
         let j = JSON(records)
@@ -69,7 +69,7 @@ public class Account : SObject  {
     
     }
     
-    override public class func soqlGetAllFields(id: String?)  -> String {
+    override open class func soqlGetAllFields(_ id: String?)  -> String {
        
         return configSOQLStatement(id, soqlbase: "select AccountNumber, AccountSource, AnnualRevenue, BillingAddress, BillingGeocodeAccuracy, CleanStatus, CreatedById, CreatedDate,  DandbCompanyId, Description, DunsNumber, Fax, Id, Industry, IsDeleted, Jigsaw, JigsawCompanyId, LastActivityDate, LastModifiedById, LastModifiedDate, LastReferencedDate, LastViewedDate, MasterRecordId, NaicsCode, NaicsDesc, Name, NumberOfEmployees,  OwnerId, Ownership, ParentId, Phone, PhotoUrl, Rating, ShippingAddress, ShippingGeocodeAccuracy, Sic, SicDesc, Site, SystemModstamp, TickerSymbol, Tradestyle, Type, Website, YearStarted from Account")
     }
@@ -128,7 +128,7 @@ public class Account : SObject  {
         //you need to retrieve the hostname from your SDK that you are using to connect to salesforce.
         //for convenience, you can store the full URL in PhotoFullURL
         PhotoRelativeUrl = json["PhotoUrl"].stringValue
-        Website = NSURL(string: json["Website"].stringValue)
+        Website = URL(string: json["Website"].stringValue)
         
     }
     

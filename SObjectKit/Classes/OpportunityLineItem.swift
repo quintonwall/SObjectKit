@@ -23,12 +23,12 @@ public final class OpportunityLineItem : SObject  {
     public var Product2Id : String?
     public var ProductCode : String?
     public var Quantity : Int?
-    public var ServiceDate : NSDate?
+    public var ServiceDate : Date?
     public var SortOrder : Int?
     public var TotalPrice : Double?
     public var UnitPrice : Double?
 
-    override public class func populateToCollection(records : NSArray)  -> [SObject] {
+    override public class func populateToCollection(_ records : NSArray)  -> [SObject] {
         var allrecords : [OpportunityLineItem] = []
         
         let j = JSON(records)
@@ -40,12 +40,12 @@ public final class OpportunityLineItem : SObject  {
         
     }
 
-    override public class func soqlGetAllFields(id: String?)  -> String {
+    override public class func soqlGetAllFields(_ id: String?)  -> String {
         
        return configSOQLStatement(id, soqlbase: "select CreatedById, CreatedDate, Description, Id, IsDeleted, LastModifiedById, LastModifiedDate, ListPrice, Name, OpportunityId, PricebookEntryId, Product2Id, ProductCode, Quantity, ServiceDate, SortOrder, SystemModstamp, TotalPrice, UnitPrice from OpportunityLineItem")        
     }
     
-    public class func soqlGetLineItemsForOpportunity(opportunityid: String) -> String {
+    public class func soqlGetLineItemsForOpportunity(_ opportunityid: String) -> String {
         return self.soqlGetAllFields(nil)+" where OpportunityId = '\(opportunityid)'"
     }
 

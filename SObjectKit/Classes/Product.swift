@@ -18,12 +18,12 @@ public final class Product : SObject  {
     public var Family : String?
     public var IsActive : Bool?
     public var IsDeleted : Bool?
-    public var LastReferencedDate : NSDate?
-    public var LastViewedDate : NSDate?
+    public var LastReferencedDate : Date?
+    public var LastViewedDate : Date?
     public var Name : String?
     public var ProductCode : String?
     
-    override public class func populateToCollection(records : NSArray)  -> [SObject] {
+    override public class func populateToCollection(_ records : NSArray)  -> [SObject] {
         var allrecords : [Product] = []
         
         let j = JSON(records)
@@ -35,7 +35,7 @@ public final class Product : SObject  {
         
     }
     
-    override public class func soqlGetAllFields(id: String?)  -> String {
+    override public class func soqlGetAllFields(_ id: String?)  -> String {
         
         return configSOQLStatement(id, soqlbase: "select CreatedById, CreatedDate, Description, Family, Id, IsActive, IsDeleted, LastModifiedById, LastModifiedDate, LastReferencedDate, LastViewedDate, Name, ProductCode, SystemModstamp from Product2")        
     }

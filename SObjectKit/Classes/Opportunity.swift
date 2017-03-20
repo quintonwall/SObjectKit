@@ -14,7 +14,7 @@ public final class Opportunity : SObject  {
     public var account : Account?
     public var Amount : Double?
     public var CampaignId : String?
-    public var CloseDate : NSDate?
+    public var CloseDate : Date?
     public var Description : String?
     public var ExpectedRevenue : Double?
     public var Fiscal : String?
@@ -26,7 +26,7 @@ public final class Opportunity : SObject  {
     public var HasOpportunityLineItem : Bool?
     public var HasOverdueTask : Bool?
     public var IsClosed : Bool?
-    public var LastViewedDate : NSDate?
+    public var LastViewedDate : Date?
     public var LeadSource : String?
     public var Name : String?
     public var NextStep : String?
@@ -41,7 +41,7 @@ public final class Opportunity : SObject  {
     
     
     
-    override public class func populateToCollection(records : NSArray)  -> [SObject] {
+    override public class func populateToCollection(_ records : NSArray)  -> [SObject] {
         var allrecords : [Opportunity] = []
         
         let j = JSON(records)
@@ -53,13 +53,13 @@ public final class Opportunity : SObject  {
         
     }
     
-    override public class func soqlGetAllFields(id: String?)  -> String {
+    override public class func soqlGetAllFields(_ id: String?)  -> String {
         
         return configSOQLStatement(id, soqlbase: "select AccountId, Amount, CampaignId, CloseDate, CreatedById, CreatedDate, Description, ExpectedRevenue, Fiscal, FiscalQuarter, FiscalYear, ForecastCategory, ForecastCategoryName, HasOpenActivity, HasOpportunityLineItem, HasOverdueTask, Id, IsClosed, IsDeleted, IsPrivate, IsWon, LastActivityDate, LastModifiedById, LastModifiedDate, LastReferencedDate, LastViewedDate, LeadSource, Name, NextStep, OwnerId, Pricebook2Id, Probability, StageName, SystemModstamp, TotalOpportunityQuantity, Type from Opportunity")
         
     }
     
-    public class func soqlGetOpportunitiesForAccount(accountid: String) -> String {
+    public class func soqlGetOpportunitiesForAccount(_ accountid: String) -> String {
         return self.soqlGetAllFields(nil)+" where Accountid = '\(accountid)'"
     }
     

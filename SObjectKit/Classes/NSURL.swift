@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension NSURL {
+public extension URL {
     
     public typealias Params = [String: AnyObject]
     
@@ -19,7 +19,7 @@ public extension NSURL {
             for param in splitParams {
                 let paramKVP = param.characters.split { $0 == "=" }.map { String($0) }
                 if paramKVP.count > 1 {
-                    params[paramKVP[0]] = paramKVP[1]
+                    params[paramKVP[0]] = paramKVP[1] as AnyObject?
                 }
             }
         }
@@ -31,12 +31,12 @@ public extension NSURL {
      * Returns an NSURL instance that can used to fetch protected salesforce content like photoURLs
      * parameter: a valid salesforce sessionid or authtoken
      */
-    public func protectedSalesforceURL(authtoken: String) -> NSURL {
+    public func protectedSalesforceURL(_ authtoken: String) -> URL {
         
         
         assert(self.isHTTPS(), "URL must be HTTPS for protected Salesforce Endpoints.")
         
-        return NSURL(string: self.absoluteString+"?oauth_token=\(authtoken)")!
+        return URL(string: self.absoluteString+"?oauth_token=\(authtoken)")!
     }
     
     public func isHTTPS()->Bool{

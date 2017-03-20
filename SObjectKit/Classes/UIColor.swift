@@ -21,7 +21,7 @@ extension UIColor {
         self.init(red:(netHex >> 16) & 0xff, green:(netHex >> 8) & 0xff, blue:netHex & 0xff)
     }
     
-    public class func hsb(h: CGFloat, _ s: CGFloat, _ b: CGFloat) -> UIColor {
+    public class func hsb(_ h: CGFloat, _ s: CGFloat, _ b: CGFloat) -> UIColor {
         return UIColor(hue: h, saturation: s, brightness: b, alpha: 1.0)
     }
   

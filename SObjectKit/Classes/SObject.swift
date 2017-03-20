@@ -11,19 +11,19 @@
 import SwiftyJSON
 
 
-public class SObject : NSObject {
+open class SObject : NSObject {
     
     
     //update this each time we update the sobjects
-    public static let salesforceAPIVersion : String = "37.0"
+    open static let salesforceAPIVersion : String = "37.0"
     
-    public var id: String?
-    public var isDeleted: Bool?
-    public var createdById: String?
-    public var createdDate : NSDate?
-    public var lastModifiedById: String?
-    public var lastModifiedDate : NSDate?
-    public var type: String?
+    open var id: String?
+    open var isDeleted: Bool?
+    open var createdById: String?
+    open var createdDate : Date?
+    open var lastModifiedById: String?
+    open var lastModifiedDate : Date?
+    open var type: String?
     
     
     
@@ -45,7 +45,7 @@ public class SObject : NSObject {
     }
     
     
-    public class func populateToCollection(records : NSArray) -> [SObject] {
+    open class func populateToCollection(_ records : NSArray) -> [SObject] {
         preconditionFailure("This method has not been overridden by SObject implementation.")
         
     }
@@ -60,20 +60,20 @@ public class SObject : NSObject {
           return "\(soql) where id = '\(id)'"
         }
     */
-    public class func soqlGetAllFields(id: String?) -> String {
+    open class func soqlGetAllFields(_ id: String?) -> String {
         preconditionFailure("This method has not been overridden by SObject implementation.")
         
     }
     
   
-     internal class func configSOQLStatement(id: String?, soqlbase: String) -> String {
+     internal class func configSOQLStatement(_ id: String?, soqlbase: String) -> String {
     
         var customfields : String = ""
         
         if self is CustomSObject.Type {
-            let className = NSStringFromClass(self as! AnyClass)
+            let className = NSStringFromClass(self as AnyClass)
             let aClass = NSClassFromString(className) as! CustomSObject.Type
-            customfields = ", "+aClass.customFieldNames().joinWithSeparator(",")
+            customfields = ", "+aClass.customFieldNames().joined(separator: ",")
         }
         
         let finalsoql = soqlbase.insert(customfields, ind: soqlbase.indexOf(" from"))

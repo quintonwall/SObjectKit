@@ -10,13 +10,13 @@ import UIKit
 
 public extension UIImage {
     
-    public func scaleToSize(size: CGSize) -> UIImage {
+    public func scaleToSize(_ size: CGSize) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
-        drawInRect(CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        return image
+        return image!
     }
     
     public func halfSize() -> UIImage {
