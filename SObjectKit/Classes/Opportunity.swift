@@ -13,7 +13,8 @@ public final class Opportunity : SObject  {
     
     public var account : Account?
     public var Amount : Double?
-    public var CampaignId : String?
+    //uncomment if you have campaign feature enabled in your org, otherwise it aint really a standard field
+    //public var CampaignId : String?
     public var CloseDate : Date?
     public var Description : String?
     public var ExpectedRevenue : Double?
@@ -55,7 +56,7 @@ public final class Opportunity : SObject  {
     
     override public class func soqlGetAllFields(_ id: String?)  -> String {
         
-        return configSOQLStatement(id, soqlbase: "select AccountId, Amount, CampaignId, CloseDate, CreatedById, CreatedDate, Description, ExpectedRevenue, Fiscal, FiscalQuarter, FiscalYear, ForecastCategory, ForecastCategoryName, HasOpenActivity, HasOpportunityLineItem, HasOverdueTask, Id, IsClosed, IsDeleted, IsPrivate, IsWon, LastActivityDate, LastModifiedById, LastModifiedDate, LastReferencedDate, LastViewedDate, LeadSource, Name, NextStep, OwnerId, Pricebook2Id, Probability, StageName, SystemModstamp, TotalOpportunityQuantity, Type from Opportunity")
+        return configSOQLStatement(id, soqlbase: "select AccountId, Amount, CloseDate, CreatedById, CreatedDate, Description, ExpectedRevenue, Fiscal, FiscalQuarter, FiscalYear, ForecastCategory, ForecastCategoryName, HasOpenActivity, HasOpportunityLineItem, HasOverdueTask, Id, IsClosed, IsDeleted, IsPrivate, IsWon, LastActivityDate, LastModifiedById, LastModifiedDate, LastReferencedDate, LastViewedDate, LeadSource, Name, NextStep, OwnerId, Pricebook2Id, Probability, StageName, SystemModstamp, TotalOpportunityQuantity, Type from Opportunity")
         
     }
     
@@ -71,7 +72,7 @@ public final class Opportunity : SObject  {
         
         account = Account(id: json["AccountId"].stringValue)
         Amount = json["Amount"].doubleValue
-        CampaignId = json["CampaignId"].stringValue
+        //CampaignId = json["CampaignId"].stringValue
         CloseDate = json["CloseDate"].date
         Description = json["Description"].stringValue
         ExpectedRevenue = json["ExpectedRevenue"].doubleValue
