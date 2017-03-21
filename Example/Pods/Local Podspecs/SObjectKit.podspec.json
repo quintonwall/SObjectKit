@@ -1,22 +1,27 @@
 {
   "name": "SObjectKit",
-  "version": "0.1.0",
-  "summary": "A short description of SObjectKit.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/<GITHUB_USERNAME>/SObjectKit",
+  "version": "0.1.37",
+  "summary": "SObjectKit makes working with Salesforce data easy.",
+  "description": "SObjectKit a collection of helpful utility classes and functions for working with Salesforce data types and data objects (SObjects)",
+  "homepage": "https://github.com/quintonwall/SObjectKit",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "quintonwall": "quinton_wall@hotmail.com"
+    "quintonwall": "@quintonwall"
   },
   "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/SObjectKit.git",
-    "tag": "0.1.0"
+    "git": "https://github.com/quintonwall/SObjectKit.git",
+    "tag": "0.1.37"
   },
   "platforms": {
-    "ios": "8.0"
+    "ios": "10.0"
   },
-  "source_files": "SObjectKit/Classes/**/*"
+  "source_files": "SObjectKit/Classes/**/*",
+  "dependencies": {
+    "SwiftyJSON": [
+      ">= 3.0.0"
+    ]
+  }
 }
