@@ -9,7 +9,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'SObjectKit'
-  s.version          = '0.1.40'
+  s.version          = '0.39.4'
   s.summary          = 'SObjectKit makes working with Salesforce data easy.'
 
 # This description is used to generate tags and improve search results.
@@ -29,7 +29,7 @@ SObjectKit a collection of helpful utility classes and functions for working wit
   s.source           = { :git => 'https://github.com/quintonwall/SObjectKit.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/quintonwall'
 
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '10.3'
 
   s.source_files = 'SObjectKit/Classes/**/*'
   

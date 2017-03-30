@@ -81,7 +81,7 @@ open class SObject : NSObject {
         if (id ?? "").isEmpty {
             return finalsoql
         } else {
-            return "\(finalsoql) where id = '\(id)'"
+            return "\(finalsoql) where id = '\(String(describing: id))'"
         }
         
     }
